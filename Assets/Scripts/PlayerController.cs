@@ -29,6 +29,13 @@ public class PlayerController : MonoBehaviour
     public List<Gun> allGuns = new List<Gun>();
     public int currentGun, maxGunIndex = 1;
 
+    //Suply amount
+    public int BowSupply = 10,CrossbowSupply = 10, ManaSupply = 10;
+
+    //ladder
+    public float ladderSpeed = 3.0f;
+    private bool isClimbing = false;
+
     private void Awake()
     {
         instance = this;
@@ -89,20 +96,27 @@ public class PlayerController : MonoBehaviour
 
         moveInput.y = yStore;
 
-        moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
-
-        if (charCon.isGrounded)
+        if (isClimbing)//climbing ladder
         {
-            jumping = 2;
-            moveInput.y = -1f;
+            moveInput = new Vector3(0, Input.GetAxis("Vertical") * ladderSpeed, 0);
+        }
+        else//normal movement
+        {
             moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
 
-            ApplyFallDamage();
-            fallTimer = 0;
-        }
-        else
-        {
-            fallTimer += Time.deltaTime;
+            if (charCon.isGrounded)
+            {
+                jumping = 2;
+                moveInput.y = -1f;
+                moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
+
+                ApplyFallDamage();
+                fallTimer = 0;
+            }
+            else
+            {
+                fallTimer += Time.deltaTime;
+            }
         }
         
         if(fallTimer > DeathFallTime)
@@ -110,7 +124,7 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.PlayerDied();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumping > 0)
+        if (!isClimbing && Input.GetKeyDown(KeyCode.Space) && jumping > 0)
         {
             moveInput.y = jumpingPower;
             jumping--;
@@ -149,9 +163,17 @@ public class PlayerController : MonoBehaviour
         {
             SwitchGun(2);
         }
-        
+
+        //Press E to Heal if player have healing potions
+        if (Input.GetKeyDown(KeyCode.E) && PlayerHeathController.instance.healPotion > 0)
+        {
+            PlayerHeathController.instance.healPotion--;
+            UIController.instance.healingPotionsText.text = "Healing Potions: " + PlayerHeathController.instance.healPotion;
+            PlayerHeathController.instance.healPlayer();
+        }
+
         //Dash
-        if(Input.GetMouseButtonDown(1) && dashTimer <= 0)
+        if (Input.GetMouseButtonDown(1) && dashTimer <= 0)
         {
             dashTimer = dashDuration;
         }
@@ -207,13 +229,49 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //load next level
         if(other.gameObject.CompareTag("NextLevel"))
         {
             SaveGunData();
+            PlayerHeathController.instance.updateHealth();
             GameManager.instance.LoadNextScene();
         }
+
+        //pick up supply
+        if(other.gameObject.CompareTag("BowArrow"))
+        {
+            allGuns[0].currentAmmo += BowSupply;
+            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            Destroy(other.gameObject);
+        }
+        else if(other.gameObject.CompareTag("CrossbowArrow"))
+        {
+            allGuns[1].currentAmmo += CrossbowSupply;
+            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            Destroy(other.gameObject);
+        }
+        else if(other.gameObject.CompareTag("Mana"))
+        {
+            allGuns[2].currentAmmo += ManaSupply;
+            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            Destroy(other.gameObject);
+        }
+
+        //climbing ladder
+        if(other.gameObject.CompareTag("Ladder"))
+        {
+            isClimbing = true;
+        }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;
+        }
+    }
+
     public void SaveGunData()//save current ammo and unlock new weapon
     {
         PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun

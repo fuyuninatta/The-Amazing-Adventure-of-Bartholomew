@@ -6,7 +6,7 @@ public class UIController : MonoBehaviour
     public static UIController instance;
 
     public Slider healthSlider;
-    public Text healthText, ammoText;
+    public Text healthText, ammoText, healingPotionsText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()

@@ -8,6 +8,10 @@ TagManager:
   - NextLevel
   - Enemy
   - HeadShot
+  - BowArrow
+  - CrossbowArrow
+  - Mana
+  - Ladder
   layers:
   - Default
   - TransparentFX

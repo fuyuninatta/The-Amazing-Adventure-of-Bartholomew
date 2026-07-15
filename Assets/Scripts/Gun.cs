@@ -21,7 +21,6 @@ public class Gun : MonoBehaviour
     private Transform poolParent;
     private bool poolReady;
 
-
     // Update is called once per frame
     void Update()
     {
