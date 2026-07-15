@@ -211,6 +211,13 @@ MonoBehaviour:
   camTrans: {fileID: 5669707679150818472}
   anim: {fileID: 363883347041310829}
   mouseSensitivity: 2
+  fallTimer: 0
+  SafeFallTime: 1.5
+  DeathFallTime: 10
+  fallDamageRatio: 0.25
+  dashSpeed: 50
+  dashDuration: 0.5
+  dashTimer: 0
   firePoint: {fileID: 6197520456830171871}
   activeGun: {fileID: 3558332833842175379}
   allGuns:
@@ -218,6 +225,7 @@ MonoBehaviour:
   - {fileID: 5717359849826045965}
   - {fileID: 4985215277482914066}
   currentGun: 0
+  maxGunIndex: 3
 --- !u!1 &1778869878262533794
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +360,7 @@ GameObject:
   - component: {fileID: 3550402934377095653}
   - component: {fileID: 4723922673066292860}
   - component: {fileID: 1682858984584818259}
+  - component: {fileID: 77317431884094894}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -454,6 +463,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &77317431884094894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815682342064910298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fe224b145373a4ca3f387496138284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHeathController
+  maxHealth: 100
+  currentHealth: 0
+  invincibleLength: 1
+  invincibleCounter: 0
 --- !u!1001 &3300313837549935015
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
     public float mouseSensitivity;
+
+    //fallen damage
+    public float fallTimer, SafeFallTime = 1.5f , DeathFallTime = 10, fallDamageRatio = 0.25f;
+
+    //dash
+    public float dashSpeed = 20f;    
+    public float dashDuration = 0.2f, dashTimer = 0.0f;
 
     //public GameObject bullet;
     public Transform firePoint;
@@ -88,6 +96,18 @@ public class PlayerController : MonoBehaviour
             jumping = 2;
             moveInput.y = -1f;
             moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
+
+            ApplyFallDamage();
+            fallTimer = 0;
+        }
+        else
+        {
+            fallTimer += Time.deltaTime;
+        }
+        
+        if(fallTimer > DeathFallTime)
+        {
+            GameManager.instance.PlayerDied();
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && jumping > 0)
@@ -95,8 +115,6 @@ public class PlayerController : MonoBehaviour
             moveInput.y = jumpingPower;
             jumping--;
         }
-
-
 
         charCon.Move(moveInput * Time.deltaTime);
         float movemag = new Vector3(charCon.velocity.x, 0, charCon.velocity.z).magnitude;
@@ -130,6 +148,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SwitchGun(2);
+        }
+        
+        //Dash
+        if(Input.GetMouseButtonDown(1) && dashTimer <= 0)
+        {
+            dashTimer = dashDuration;
+        }
+        if(dashTimer >0)
+        {
+            charCon.Move(transform.forward * dashSpeed * Time.deltaTime);
+            dashTimer -= Time.deltaTime;
         }
     }
     public void fireShot()
@@ -191,6 +220,17 @@ public class PlayerController : MonoBehaviour
         for(int i=0;i<allGuns.Count; i++)//save all ammo
         {
             PlayerPrefs.SetInt("Gun_"+i+"_Ammo", allGuns[i].currentAmmo);
+        }
+    }
+
+    public void ApplyFallDamage()
+    {
+        if(fallTimer > SafeFallTime)
+        {
+            float damagePercent = fallTimer / DeathFallTime;
+            float damage = damagePercent * PlayerHeathController.instance.maxHealth * fallDamageRatio;
+
+            PlayerHeathController.instance.DamagePlayer(damage);
         }
     }
 }

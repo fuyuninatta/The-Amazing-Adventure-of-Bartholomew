@@ -28,9 +28,18 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             invincibleCounter -= Time.deltaTime;
         }
     }
-    public void DamagePlayer(int damageAmount)
+    public void DamagePlayer(float damageAmount)
     {
-        
+        int damage = (int)(damageAmount);
+        currentHealth -= damage;
+        if(currentHealth<=0)
+        {
+            transform.parent.gameObject.SetActive(false);
+            currentHealth = 0;
+            GameManager.instance.PlayerDied();
+        }
+        UIController.instance.healthSlider.value = currentHealth;
+        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
     }
 
     public void healPlayer(int healAmount)
