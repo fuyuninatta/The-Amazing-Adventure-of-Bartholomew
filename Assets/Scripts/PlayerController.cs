@@ -98,7 +98,15 @@ public class PlayerController : MonoBehaviour
 
         if (isClimbing)//climbing ladder
         {
-            moveInput = new Vector3(0, Input.GetAxis("Vertical") * ladderSpeed, 0);
+            if (Input.GetKeyDown(KeyCode.Space))//player jump when climbing ladder
+            {
+                isClimbing = false;
+                moveInput.y = jumpingPower;
+            }
+            else//when climbing ladder, player can only move up and down
+            {
+                moveInput = new Vector3(0, Input.GetAxis("Vertical") * ladderSpeed, 0);
+            }
         }
         else//normal movement
         {
@@ -260,7 +268,10 @@ public class PlayerController : MonoBehaviour
         //climbing ladder
         if(other.gameObject.CompareTag("Ladder"))
         {
-            isClimbing = true;
+            if (Input.GetKey(KeyCode.W))//only when player press w when touching ladder will start climbing
+            {
+                isClimbing = true;
+            }
         }
     }
 
