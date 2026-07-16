@@ -65,6 +65,10 @@ PrefabInstance:
       value: arrow_crossbow
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c1d9cf10a2ab2a948a231b65e11b369b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c1d9cf10a2ab2a948a231b65e11b369b, type: 3}
       propertyPath: m_TagString
       value: Bullet
       objectReference: {fileID: 0}
@@ -108,6 +112,7 @@ MonoBehaviour:
   impactEffect: {fileID: 7014957094343536532, guid: 1869080c49e5a1243b90c04bedb00187, type: 3}
   attackPlayer: 0
   damage: 1
+  pierceCount: 5
 --- !u!54 &406882414769806258
 Rigidbody:
   m_ObjectHideFlags: 0

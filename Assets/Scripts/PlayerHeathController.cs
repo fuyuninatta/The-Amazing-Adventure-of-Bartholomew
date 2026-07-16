@@ -7,6 +7,9 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     public float invincibleLength = 1f;
     public float invincibleCounter;
     public int healAmount = 10, healPotion = 0;
+
+    //sfx
+    public AudioClip gethitsfx, deathsfx;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -46,8 +49,12 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     {
         int damage = (int)(damageAmount);
         currentHealth -= damage;
+        //get hit sfx
+        PlayerController.instance.audiosource.PlayOneShot(gethitsfx, 0.5f);
         if(currentHealth<=0)
         {
+            //death sfx
+            PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
             transform.parent.gameObject.SetActive(false);
             currentHealth = 0;
             GameManager.instance.PlayerDied();

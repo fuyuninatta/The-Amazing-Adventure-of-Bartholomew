@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     public float ladderSpeed = 3.0f;
     private bool isClimbing = false;
 
+    //audio source
+    public AudioSource audiosource;
+
     private void Awake()
     {
         instance = this;
@@ -63,8 +66,10 @@ public class PlayerController : MonoBehaviour
                 allGuns[i].currentAmmo = PlayerPrefs.GetInt("Gun_" + i + "_Ammo");
             }
         }
-        
-        UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+
+        AmmoUpdate();
+
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -200,6 +205,9 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
+        //play shooting sfx
+        audiosource.PlayOneShot(activeGun.Shootsfx, 0.25f);
+        //shoot
         if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50f))
         {
             firePoint.LookAt(hit.point);
@@ -215,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
         activeGun.fireCounter = activeGun.fireRate;
 
-        UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+        AmmoUpdate();
     }
 
     public void SwitchGun(int currentGunIndex)
@@ -231,8 +239,6 @@ public class PlayerController : MonoBehaviour
 
         activeGun = allGuns[currentGun];
         activeGun.gameObject.SetActive(true);
-
-        UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -249,19 +255,19 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("BowArrow"))
         {
             allGuns[0].currentAmmo += BowSupply;
-            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            AmmoUpdate();
             Destroy(other.gameObject);
         }
         else if(other.gameObject.CompareTag("CrossbowArrow"))
         {
             allGuns[1].currentAmmo += CrossbowSupply;
-            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            AmmoUpdate();
             Destroy(other.gameObject);
         }
         else if(other.gameObject.CompareTag("Mana"))
         {
             allGuns[2].currentAmmo += ManaSupply;
-            UIController.instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            AmmoUpdate();
             Destroy(other.gameObject);
         }
 
@@ -300,6 +306,27 @@ public class PlayerController : MonoBehaviour
             float damage = damagePercent * PlayerHeathController.instance.maxHealth * fallDamageRatio;
 
             PlayerHeathController.instance.DamagePlayer(damage);
+        }
+    }
+
+    public void AmmoUpdate()
+    {
+        UIController.instance.ammo1Text.text = "Bow Arrows: " + allGuns[0].currentAmmo;
+        //adjust the ammo ui base on unlocked weapon
+        if (maxGunIndex == 1)
+        {
+            UIController.instance.ammo2Text.text = " ";
+            UIController.instance.ammo3Text.text = " ";
+        }
+        else if (maxGunIndex == 2)
+        {
+            UIController.instance.ammo2Text.text = "Crossbow Arrows:  " + allGuns[1].currentAmmo;
+            UIController.instance.ammo3Text.text = " ";
+        }
+        else if(maxGunIndex == 3)
+        {
+            UIController.instance.ammo2Text.text = "Crossbow Arrows:  " + allGuns[1].currentAmmo;
+            UIController.instance.ammo3Text.text = "Mana: " + allGuns[2].currentAmmo;
         }
     }
 }
