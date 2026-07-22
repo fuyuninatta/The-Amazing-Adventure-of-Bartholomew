@@ -582,7 +582,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   AddMaxHealthAmount: 15
-  invincibleLength: 1
+  invincibleLength: 0.2
   invincibleCounter: 0
   healAmount: 10
   healPotion: 0

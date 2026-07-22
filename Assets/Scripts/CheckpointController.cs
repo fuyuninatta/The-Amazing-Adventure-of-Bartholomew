@@ -10,10 +10,10 @@ public class CheckpointController : MonoBehaviour
     {
         if(PlayerPrefs.HasKey(SceneManager.GetActiveScene().name + "_cp"))
         {
-            if(PlayerPrefs.GetString(SceneManager.GetActiveScene().name + "_cp")==cpName)
+            if(PlayerPrefs.GetString(SceneManager.GetActiveScene().name + "_cp") == cpName)
             {
                 PlayerController.instance.GetComponent<CharacterController>().enabled = false;
-                PlayerController.instance.transform.position = transform.position;
+                PlayerController.instance.transform.position = transform.position + new Vector3(0.0f,5.0f,0.0f);
                 PlayerController.instance.transform.rotation = transform.rotation;
                 PlayerController.instance.GetComponent<CharacterController>().enabled = true;
             }

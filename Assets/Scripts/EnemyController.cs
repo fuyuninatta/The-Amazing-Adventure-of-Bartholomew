@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour
 
     public Animator anim;
 
+    public AudioClip ShootSfx;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -145,8 +147,6 @@ public class EnemyController : MonoBehaviour
 
                 anim.SetBool("isMoving", false);
             }
-
-
         }
     }
 
@@ -183,6 +183,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             bullet = Instantiate(bulletPrefab, bulletPoolParent);
+            PlayerController.instance.audiosource.PlayOneShot(ShootSfx, 0.1f);
             bullet.SetReturnAction(ReturnBullet);
         }
 

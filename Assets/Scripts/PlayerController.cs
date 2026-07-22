@@ -252,22 +252,26 @@ public class PlayerController : MonoBehaviour
         }
 
         //pick up supply
-        if(other.gameObject.CompareTag("BowArrow"))
+        if (other.gameObject.CompareTag("BowArrow") || other.gameObject.CompareTag("CrossbowArrow") || other.gameObject.CompareTag("Mana"))
         {
-            allGuns[0].currentAmmo += BowSupply;
+            //add ammo base on what item
+            if (other.gameObject.CompareTag("BowArrow"))
+            {
+                allGuns[0].currentAmmo += BowSupply;
+            }
+            else if (other.gameObject.CompareTag("CrossbowArrow"))
+            {
+                allGuns[1].currentAmmo += CrossbowSupply;
+            }
+            else if (other.gameObject.CompareTag("Mana"))
+            {
+                allGuns[2].currentAmmo += ManaSupply;
+            }
+
+            //update ui
             AmmoUpdate();
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.CompareTag("CrossbowArrow"))
-        {
-            allGuns[1].currentAmmo += CrossbowSupply;
-            AmmoUpdate();
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.CompareTag("Mana"))
-        {
-            allGuns[2].currentAmmo += ManaSupply;
-            AmmoUpdate();
+
+            //remove item
             Destroy(other.gameObject);
         }
 

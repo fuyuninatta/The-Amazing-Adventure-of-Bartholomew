@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c1d9cf10a2ab2a948a231b65e11b369b, type: 3}
       propertyPath: m_Name
-      value: arrow_crossbow
+      value: Player_Bullet_Crossbow
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c1d9cf10a2ab2a948a231b65e11b369b, type: 3}
       propertyPath: m_Layer
@@ -113,6 +113,7 @@ MonoBehaviour:
   attackPlayer: 0
   damage: 1
   pierceCount: 5
+  KnockBackPower: 5
 --- !u!54 &406882414769806258
 Rigidbody:
   m_ObjectHideFlags: 0

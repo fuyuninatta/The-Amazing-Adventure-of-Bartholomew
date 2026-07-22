@@ -55,6 +55,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         {
             //death sfx
             PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
+            PlayerController.instance.SaveGunData();
             transform.parent.gameObject.SetActive(false);
             currentHealth = 0;
             GameManager.instance.PlayerDied();
@@ -84,6 +85,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             {
                 transform.parent.gameObject.SetActive(false);
                 currentHealth = 0;
+                updateHealth();
                 GameManager.instance.PlayerDied();
             }
 

@@ -29,7 +29,10 @@ public class HealthPickUp : MonoBehaviour
             {
                 PlayerHeathController.instance.IncreaseMaxHealth();
             }
-                Destroy(gameObject);
+
+            //remove item
+            Destroy(gameObject);
+            
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BulletController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class BulletController : MonoBehaviour
     private int remainingPierces;
     private List<Collider> hitList = new List<Collider>();//record how many enemy get hit
 
+    public float KnockBackPower;
+    
     public void SetReturnAction(Action<BulletController> returnAction)
     {
         returnToPool = returnAction;
@@ -70,6 +73,18 @@ public class BulletController : MonoBehaviour
         {
             hitList.Add(other);
             damageable.TakeDamage(damage, attackPlayer);
+
+            //Knock Back
+            NavMeshAgent agent = other.gameObject.GetComponentInParent<NavMeshAgent>();
+            if (agent != null)
+            {
+                Debug.Log("1");
+                agent.enabled = false;
+                Vector3 direction = (other.transform.position - transform.position).normalized;
+                direction.y = 0;//set y axis dont effect
+                other.transform.parent.position += direction * KnockBackPower;
+                agent.enabled = true;
+            }
 
             if (impactEffect != null)
             {
