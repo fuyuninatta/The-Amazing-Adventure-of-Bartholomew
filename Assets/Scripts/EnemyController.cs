@@ -33,6 +33,11 @@ public class EnemyController : MonoBehaviour
 
     public AudioClip ShootSfx;
 
+    //knockback variables
+    private float knockbackTimer;
+    private Vector3 knockbackVel;
+    public float KnockbackForce = 8f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -47,6 +52,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //knockback
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+            agent.Move(knockbackVel * Time.deltaTime);
+            return;//skip follow player
+        }
+
         targetPoint = PlayerController.instance.transform.position;
         targetPoint.y = transform.position.y;//replacing his y target to be his y axis itself
 
@@ -70,7 +83,7 @@ public class EnemyController : MonoBehaviour
                 shotWaitCounter = waitBetweenShots;
             }
 
-            if (agent.remainingDistance < .25f)
+            if (agent.remainingDistance < 0.25f)
             {
                 anim.SetBool("isMoving", false);
             }
@@ -187,6 +200,8 @@ public class EnemyController : MonoBehaviour
             bullet.SetReturnAction(ReturnBullet);
         }
 
+        bullet.shooter = transform;
+
         bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
         bullet.Fire();
@@ -198,5 +213,17 @@ public class EnemyController : MonoBehaviour
     {
         bullet.gameObject.SetActive(false);
         bulletPool.Enqueue(bullet);
+    }
+
+    public void ApplyKnockback(Vector3 hitPosition, float force)
+    {
+        // calculate knockback direction
+        Vector3 dir = transform.position - hitPosition;
+        dir.y = 0; //lock y axis
+        dir.Normalize();
+
+        //calculate knockback power
+        knockbackVel = dir * force;
+        knockbackTimer = force * 0.02f;
     }
 }

@@ -113,7 +113,8 @@ MonoBehaviour:
   attackPlayer: 0
   damage: 1
   pierceCount: 0
-  KnockBackPower: 1
+  KnockBackPower: 5
+  shooter: {fileID: 0}
 --- !u!54 &3906580429952960910
 Rigidbody:
   m_ObjectHideFlags: 0

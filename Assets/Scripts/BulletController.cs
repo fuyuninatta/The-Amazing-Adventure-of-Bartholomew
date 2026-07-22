@@ -26,7 +26,8 @@ public class BulletController : MonoBehaviour
     private List<Collider> hitList = new List<Collider>();//record how many enemy get hit
 
     public float KnockBackPower;
-    
+
+    [HideInInspector] public Transform shooter;
     public void SetReturnAction(Action<BulletController> returnAction)
     {
         returnToPool = returnAction;
@@ -65,7 +66,8 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (hitList.Contains(other)) return;//prevent repeat hit
-        
+
+        if (shooter != null && other.transform.root == shooter.root) return;//prevent shooting itself
 
         IDamagable damageable = other.GetComponentInParent<IDamagable>();
 
@@ -75,15 +77,13 @@ public class BulletController : MonoBehaviour
             damageable.TakeDamage(damage, attackPlayer);
 
             //Knock Back
-            NavMeshAgent agent = other.gameObject.GetComponentInParent<NavMeshAgent>();
-            if (agent != null)
+            if (!other.CompareTag("Boss"))
             {
-                Debug.Log("1");
-                agent.enabled = false;
-                Vector3 direction = (other.transform.position - transform.position).normalized;
-                direction.y = 0;//set y axis dont effect
-                other.transform.parent.position += direction * KnockBackPower;
-                agent.enabled = true;
+                EnemyController enemy = other.gameObject.GetComponentInParent<EnemyController>();
+                if (enemy != null)
+                {
+                    enemy.ApplyKnockback(transform.position, KnockBackPower);
+                }
             }
 
             if (impactEffect != null)

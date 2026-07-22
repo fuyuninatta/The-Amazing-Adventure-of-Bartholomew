@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
 
     //audio source
     public AudioSource audiosource;
+    
+    //knockback by boss
+    private float knockbackTimer;
+    private Vector3 knockbackDir;
+    public float knockbackForce = 25f;
 
     private void Awake()
     {
@@ -195,6 +200,13 @@ public class PlayerController : MonoBehaviour
             charCon.Move(transform.forward * dashSpeed * Time.deltaTime);
             dashTimer -= Time.deltaTime;
         }
+
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+            charCon.Move(knockbackDir * knockbackForce * Time.deltaTime);
+            return;
+        }
     }
     public void fireShot()
     {
@@ -246,6 +258,7 @@ public class PlayerController : MonoBehaviour
         //load next level
         if(other.gameObject.CompareTag("NextLevel"))
         {
+            PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun
             SaveGunData();
             PlayerHeathController.instance.updateHealth();
             GameManager.instance.LoadNextScene();
@@ -283,6 +296,16 @@ public class PlayerController : MonoBehaviour
                 isClimbing = true;
             }
         }
+
+        //Bite damage
+        if (other.CompareTag("Boss"))
+        {
+            PlayerHeathController.instance.DamagePlayer(40.0f);
+            knockbackDir= (transform.position - other.transform.position).normalized;
+            knockbackDir.y = 0.5f;
+            knockbackTimer = knockbackForce * 0.02f;
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -295,7 +318,6 @@ public class PlayerController : MonoBehaviour
 
     public void SaveGunData()//save current ammo and unlock new weapon
     {
-        PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun
         for(int i=0;i<allGuns.Count; i++)//save all ammo
         {
             PlayerPrefs.SetInt("Gun_"+i+"_Ammo", allGuns[i].currentAmmo);

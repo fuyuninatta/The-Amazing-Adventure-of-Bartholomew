@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7388471650735534754}
   m_Layer: 0
   m_Name: Range_Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,9 +104,9 @@ MonoBehaviour:
   fireRate: 0.3
   waitBetweenShots: 1
   timeToShoot: 1
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
   anim: {fileID: 8727572338041934720}
+  ShootSfx: {fileID: 0}
+  KnockbackForce: 8
 --- !u!195 &7388471650735534754
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 905759287741057867}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

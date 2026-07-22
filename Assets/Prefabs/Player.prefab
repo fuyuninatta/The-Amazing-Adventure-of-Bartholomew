@@ -233,6 +233,7 @@ MonoBehaviour:
   ManaSupply: 10
   ladderSpeed: 3
   audiosource: {fileID: 0}
+  knockbackForce: 20
 --- !u!82 &5053701831920036581
 AudioSource:
   m_ObjectHideFlags: 0
@@ -924,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06db98ad0d0b7d743b2a0875a1e8e774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  bulletPrefab: {fileID: 3390670577263124499, guid: 746a2994f3dfc994a8e34ef6f70849c8, type: 3}
+  bulletPrefab: {fileID: 3390670577263124499, guid: 36a167fc58dd4d0438adbbc734f4c9c3, type: 3}
   poolSize: 50
   canAutoFire: 1
   fireRate: 0.1
