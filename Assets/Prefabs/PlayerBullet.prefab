@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3390670577263124499}
   - component: {fileID: 7749872265384852243}
   - component: {fileID: -8817459325342609369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -129,10 +129,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
   moveSpeed: 15
   lifeTime: 5
-  RB: {fileID: 7749872265384852243}
-  PS: {fileID: 817017644006531206, guid: 1869080c49e5a1243b90c04bedb00187, type: 3}
-  damageEnemy: 1
-  damagePlayer: 0
+  rb: {fileID: 7749872265384852243}
+  impactEffect: {fileID: 7014957094343536532, guid: 1869080c49e5a1243b90c04bedb00187, type: 3}
+  attackPlayer: 0
+  damage: 1
 --- !u!54 &7749872265384852243
 Rigidbody:
   m_ObjectHideFlags: 0

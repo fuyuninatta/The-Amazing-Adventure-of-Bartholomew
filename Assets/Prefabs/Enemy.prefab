@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 887274277070620938}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 2.18, z: 2.0060005}
+  m_LocalPosition: {x: 0.25, y: 2.18, z: 2.23}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103,7 +103,7 @@ MonoBehaviour:
   fireRate: 0.3
   waitBetweenShots: 1
   timeToShoot: 1
-  anim: {fileID: 0}
+  anim: {fileID: 8727572338041934720}
 --- !u!195 &7388471650735534754
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -355,5 +355,10 @@ PrefabInstance:
 --- !u!4 &8727572338034687072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+  m_PrefabInstance: {fileID: 8727572338034550496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8727572338041934720 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
   m_PrefabInstance: {fileID: 8727572338034550496}
   m_PrefabAsset: {fileID: 0}

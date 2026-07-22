@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -18,6 +19,11 @@ public class BulletController : MonoBehaviour
 
     private Action<BulletController> returnToPool;
 
+    //pierce bullet
+    public int pierceCount = 0;//0 can not pierce, >0 can pierce
+    private int remainingPierces;
+    private List<Collider> hitList = new List<Collider>();//record how many enemy get hit
+
     public void SetReturnAction(Action<BulletController> returnAction)
     {
         returnToPool = returnAction;
@@ -28,9 +34,12 @@ public class BulletController : MonoBehaviour
         hasHit = false;
         lifeCounter = lifeTime;
 
+        //reset pierce variables
+        remainingPierces = pierceCount;
+        hitList.Clear();
+
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-
         rb.linearVelocity = transform.forward * moveSpeed;
     }
 
@@ -52,25 +61,33 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasHit) return;
-
-        hasHit = true;
+        if (hitList.Contains(other)) return;//prevent repeat hit
+        
 
         IDamagable damageable = other.GetComponentInParent<IDamagable>();
 
         if (damageable != null)
         {
+            hitList.Add(other);
             damageable.TakeDamage(damage, attackPlayer);
+
+            if (impactEffect != null)
+            {
+                float offset = 0.7f;
+                Vector3 newPosition = transform.position - transform.forward * offset;
+
+                Instantiate(impactEffect, newPosition, transform.rotation);
+            }
+
+            if (remainingPierces > 0)
+            {
+                remainingPierces--;
+                return;
+            }
         }
 
-        if (impactEffect != null)
-        {
-            float offset = 0.7f;
-            Vector3 newPosition = transform.position - transform.forward * offset;
-
-            Instantiate(impactEffect, newPosition, transform.rotation);
-        }
-
+        if (hasHit) return;
+        hasHit = true;
         ReturnToPool();
     }
 
