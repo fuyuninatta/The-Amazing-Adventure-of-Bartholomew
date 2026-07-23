@@ -75,6 +75,10 @@ public class PlayerController : MonoBehaviour
         AmmoUpdate();
 
         audiosource = GetComponent<AudioSource>();
+
+        //debug only
+        PlayerPrefs.SetInt("maxGunIndex",3);
+        PlayerPrefs.SetInt("maxHealth", 100);
     }
 
     // Update is called once per frame
@@ -259,6 +263,10 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("NextLevel"))
         {
             PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun
+            if(maxGunIndex>3)//PREVENT ERROR
+            {
+                PlayerPrefs.SetInt("maxGunIndex", 3);
+            }
             SaveGunData();
             PlayerHeathController.instance.updateHealth();
             GameManager.instance.LoadNextScene();
