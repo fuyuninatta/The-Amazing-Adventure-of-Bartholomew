@@ -133,7 +133,9 @@ public class EnemyController : MonoBehaviour
                     if (fireCount <= 0)
                     {
                         fireCount = fireRate;
-                        transform.LookAt(targetPoint);
+                        Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
                         firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 0.4f, 0f));
                         Vector3 targetDir = PlayerController.instance.transform.position - transform.position;//get direction
                         float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
