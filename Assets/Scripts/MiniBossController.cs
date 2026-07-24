@@ -14,10 +14,15 @@ public class MiniBossController : MonoBehaviour, IDamagable
     private bool action = false;//true:summon, false:free roam
     public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
 
+    //UI
+    private HealthBar healthBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentHealth = MaxHealth;
+        healthBar = GetComponent<HealthBar>();
+        actionTimer = actionDuration;
     }
 
     // Update is called once per frame
@@ -47,9 +52,11 @@ public class MiniBossController : MonoBehaviour, IDamagable
                 RandomAction();
                 if (action)//summon enemies
                 {
+                    Debug.Log("summon");
+                    animator.SetTrigger("Summon");
                     SummonEnemy.instance.spawnEnemy();
-                    actionTimer = actionDuration;
                 }
+                actionTimer = actionDuration;
             }
         }
     }
