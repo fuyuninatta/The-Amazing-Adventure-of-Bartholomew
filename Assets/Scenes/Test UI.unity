@@ -963,6 +963,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8696547521497613836, guid: 25cc008564cb7714f85bec8446fa7ac0, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1692638410}
+    - target: {fileID: -8696547521497613836, guid: 25cc008564cb7714f85bec8446fa7ac0, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 1760210553}
@@ -1097,6 +1101,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 918957675890546877, guid: 89828d2b899bbe74585d9af7a1e91bb8, type: 3}
   m_PrefabInstance: {fileID: 868501853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1692638410 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8727572338041934720, guid: 25cc008564cb7714f85bec8446fa7ac0, type: 3}
+  m_PrefabInstance: {fileID: 1475496612}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1694493818
 PrefabInstance:
