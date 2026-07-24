@@ -55,6 +55,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         {
             //death sfx
             PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
+            PlayerController.instance.SaveGunData();
             transform.parent.gameObject.SetActive(false);
             currentHealth = 0;
             GameManager.instance.PlayerDied();
@@ -76,6 +77,10 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
 
     public void TakeDamage(int damage, bool attackPlayer)
     {
+        if(!attackPlayer)
+        {
+            return;
+        }
         if (invincibleCounter <= 0)
         {
             currentHealth -= damage;
@@ -84,6 +89,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             {
                 transform.parent.gameObject.SetActive(false);
                 currentHealth = 0;
+                updateHealth();
                 GameManager.instance.PlayerDied();
             }
 

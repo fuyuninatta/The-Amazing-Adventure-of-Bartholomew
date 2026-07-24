@@ -6,12 +6,12 @@ TagManager:
   tags:
   - Bullet
   - NextLevel
-  - Enemy
   - HeadShot
   - BowArrow
   - CrossbowArrow
   - Mana
   - Ladder
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -31,6 +31,13 @@ public class EnemyController : MonoBehaviour
 
     public Animator anim;
 
+    public AudioClip ShootSfx;
+
+    //knockback variables
+    private float knockbackTimer;
+    private Vector3 knockbackVel;
+    public float KnockbackForce = 8f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,6 +52,14 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //knockback
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+            agent.Move(knockbackVel * Time.deltaTime);
+            return;//skip follow player
+        }
+
         targetPoint = PlayerController.instance.transform.position;
         targetPoint.y = transform.position.y;//replacing his y target to be his y axis itself
 
@@ -68,7 +83,7 @@ public class EnemyController : MonoBehaviour
                 shotWaitCounter = waitBetweenShots;
             }
 
-            if (agent.remainingDistance < .25f)
+            if (agent.remainingDistance < 0.25f)
             {
                 anim.SetBool("isMoving", false);
             }
@@ -118,7 +133,9 @@ public class EnemyController : MonoBehaviour
                     if (fireCount <= 0)
                     {
                         fireCount = fireRate;
-                        transform.LookAt(targetPoint);
+                        Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
                         firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 0.4f, 0f));
                         Vector3 targetDir = PlayerController.instance.transform.position - transform.position;//get direction
                         float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
@@ -145,8 +162,6 @@ public class EnemyController : MonoBehaviour
 
                 anim.SetBool("isMoving", false);
             }
-
-
         }
     }
 
@@ -183,8 +198,11 @@ public class EnemyController : MonoBehaviour
         else
         {
             bullet = Instantiate(bulletPrefab, bulletPoolParent);
+            PlayerController.instance.audiosource.PlayOneShot(ShootSfx, 0.1f);
             bullet.SetReturnAction(ReturnBullet);
         }
+
+        bullet.shooter = transform;
 
         bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
@@ -197,5 +215,17 @@ public class EnemyController : MonoBehaviour
     {
         bullet.gameObject.SetActive(false);
         bulletPool.Enqueue(bullet);
+    }
+
+    public void ApplyKnockback(Vector3 hitPosition, float force)
+    {
+        // calculate knockback direction
+        Vector3 dir = transform.position - hitPosition;
+        dir.y = 0; //lock y axis
+        dir.Normalize();
+
+        //calculate knockback power
+        knockbackVel = dir * force;
+        knockbackTimer = force * 0.02f;
     }
 }

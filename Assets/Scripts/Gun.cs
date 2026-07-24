@@ -67,6 +67,8 @@ public class Gun : MonoBehaviour
             bullet.SetReturnAction(ReturnBullet);//return to the correct pool when finished
         }
 
+        bullet.shooter = transform.root;
+
         bullet.transform.SetPositionAndRotation(position, rotation);//set the position n rotation correctly based on firepoint
         bullet.gameObject.SetActive(true);//activate it, make the function alive
         bullet.Fire();//move it forward

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BulletController : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class BulletController : MonoBehaviour
     private int remainingPierces;
     private List<Collider> hitList = new List<Collider>();//record how many enemy get hit
 
+    public float KnockBackPower;
+
+    [HideInInspector] public Transform shooter;
     public void SetReturnAction(Action<BulletController> returnAction)
     {
         returnToPool = returnAction;
@@ -62,7 +66,8 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (hitList.Contains(other)) return;//prevent repeat hit
-        
+
+        if (shooter != null && other.transform.root == shooter.root) return;//prevent shooting itself
 
         IDamagable damageable = other.GetComponentInParent<IDamagable>();
 
@@ -70,6 +75,16 @@ public class BulletController : MonoBehaviour
         {
             hitList.Add(other);
             damageable.TakeDamage(damage, attackPlayer);
+
+            //Knock Back
+            if (!other.CompareTag("Boss"))
+            {
+                EnemyController enemy = other.gameObject.GetComponentInParent<EnemyController>();
+                if (enemy != null)
+                {
+                    enemy.ApplyKnockback(transform.position, KnockBackPower);
+                }
+            }
 
             if (impactEffect != null)
             {

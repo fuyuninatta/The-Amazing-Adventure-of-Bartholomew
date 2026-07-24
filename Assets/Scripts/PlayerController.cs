@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
 
     //audio source
     public AudioSource audiosource;
+    
+    //knockback by boss
+    private float knockbackTimer;
+    private Vector3 knockbackDir;
+    public float knockbackForce = 25f;
 
     private void Awake()
     {
@@ -70,6 +75,10 @@ public class PlayerController : MonoBehaviour
         AmmoUpdate();
 
         audiosource = GetComponent<AudioSource>();
+
+        //debug only
+        PlayerPrefs.SetInt("maxGunIndex",3);
+        PlayerPrefs.SetInt("maxHealth", 100);
     }
 
     // Update is called once per frame
@@ -195,6 +204,13 @@ public class PlayerController : MonoBehaviour
             charCon.Move(transform.forward * dashSpeed * Time.deltaTime);
             dashTimer -= Time.deltaTime;
         }
+
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+            charCon.Move(knockbackDir * knockbackForce * Time.deltaTime);
+            return;
+        }
     }
     public void fireShot()
     {
@@ -246,28 +262,37 @@ public class PlayerController : MonoBehaviour
         //load next level
         if(other.gameObject.CompareTag("NextLevel"))
         {
+            PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun
+            if(maxGunIndex>3)//PREVENT ERROR
+            {
+                PlayerPrefs.SetInt("maxGunIndex", 3);
+            }
             SaveGunData();
             PlayerHeathController.instance.updateHealth();
             GameManager.instance.LoadNextScene();
         }
 
         //pick up supply
-        if(other.gameObject.CompareTag("BowArrow"))
+        if (other.gameObject.CompareTag("BowArrow") || other.gameObject.CompareTag("CrossbowArrow") || other.gameObject.CompareTag("Mana"))
         {
-            allGuns[0].currentAmmo += BowSupply;
+            //add ammo base on what item
+            if (other.gameObject.CompareTag("BowArrow"))
+            {
+                allGuns[0].currentAmmo += BowSupply;
+            }
+            else if (other.gameObject.CompareTag("CrossbowArrow"))
+            {
+                allGuns[1].currentAmmo += CrossbowSupply;
+            }
+            else if (other.gameObject.CompareTag("Mana"))
+            {
+                allGuns[2].currentAmmo += ManaSupply;
+            }
+
+            //update ui
             AmmoUpdate();
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.CompareTag("CrossbowArrow"))
-        {
-            allGuns[1].currentAmmo += CrossbowSupply;
-            AmmoUpdate();
-            Destroy(other.gameObject);
-        }
-        else if(other.gameObject.CompareTag("Mana"))
-        {
-            allGuns[2].currentAmmo += ManaSupply;
-            AmmoUpdate();
+
+            //remove item
             Destroy(other.gameObject);
         }
 
@@ -278,6 +303,16 @@ public class PlayerController : MonoBehaviour
             {
                 isClimbing = true;
             }
+        }
+
+        //Bite damage
+        if (other.CompareTag("Boss"))
+        {
+            PlayerHeathController.instance.DamagePlayer(40.0f);
+            knockbackDir= (transform.position - other.transform.position).normalized;
+            knockbackDir.y = 0.5f;
+            knockbackTimer = knockbackForce * 0.02f;
+
         }
     }
 
@@ -291,7 +326,6 @@ public class PlayerController : MonoBehaviour
 
     public void SaveGunData()//save current ammo and unlock new weapon
     {
-        PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun
         for(int i=0;i<allGuns.Count; i++)//save all ammo
         {
             PlayerPrefs.SetInt("Gun_"+i+"_Ammo", allGuns[i].currentAmmo);
