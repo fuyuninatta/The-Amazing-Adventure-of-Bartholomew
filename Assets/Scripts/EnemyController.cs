@@ -94,6 +94,8 @@ public class EnemyController : MonoBehaviour
         }
         else//chasing is true, he is chasing us here
         {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPoint - transform.position), Time.deltaTime * 10f);
+
             if (Vector3.Distance(transform.position, targetPoint) <= distanceToStop)//distance within 2m
             {
                 agent.destination = transform.position;//stop at his current position
