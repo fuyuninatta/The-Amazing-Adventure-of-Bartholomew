@@ -32,10 +32,12 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
         if (agent.remainingDistance < 0.25f)
         {
+            Debug.Log("111");
             anim.SetBool("isMoving", false);
         }
         else
         {
+            Debug.Log("222");
             anim.SetBool("isMoving", true);
         }
 
