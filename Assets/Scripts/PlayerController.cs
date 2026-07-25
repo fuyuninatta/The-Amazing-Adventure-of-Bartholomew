@@ -2,6 +2,7 @@ using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -79,6 +80,15 @@ public class PlayerController : MonoBehaviour
         //debug only
         PlayerPrefs.SetInt("maxGunIndex",3);
         PlayerPrefs.SetInt("maxHealth", 100);
+
+        if(SceneManager.GetActiveScene().name != "LastScene")
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     // Update is called once per frame

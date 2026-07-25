@@ -39,6 +39,9 @@ public class BossController : MonoBehaviour, IDamagable
     private float phase2Timer = 0f, actionDuration = 5f, freeroamRange = 10f;
     private bool isReturning = false;
 
+    //UI
+    private HealthBar healthBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +49,9 @@ public class BossController : MonoBehaviour, IDamagable
         PrepareFirePool();
         originalPos = transform.position;
         originalRot = transform.rotation;
+
+        //get UI
+        healthBar = gameObject.GetComponent<HealthBar>();
     }
 
     // Update is called once per frame

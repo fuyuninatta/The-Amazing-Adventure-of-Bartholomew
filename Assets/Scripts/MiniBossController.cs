@@ -8,22 +8,36 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public AudioClip SummonSfx, GetHitSfx, DeathSfx;
 
     public NavMeshAgent agent;
-    public Animator animator;
+    public Animator anim;
     public GameObject WeaponGate;
 
     private bool action = false;//true:summon, false:free roam
     public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
 
+    //UI
+    private HealthBar healthBar;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        currentHealth = MaxHealth;
+        healthBar = GetComponent<HealthBar>();
+        actionTimer = actionDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 playerPos = PlayerController.instance.transform.position;
+
+        if (agent.remainingDistance < 0.25f)
+        {
+            anim.SetBool("isMoving", false);
+        }
+        else
+        {
+            anim.SetBool("isMoving", true);
+        }
 
         if (actionTimer > 0)
         {
@@ -42,14 +56,16 @@ public class MiniBossController : MonoBehaviour, IDamagable
         {
             agent.ResetPath();
 
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 RandomAction();
                 if (action)//summon enemies
                 {
+                    Debug.Log("summon");
+                    anim.SetTrigger("fireShot");
                     SummonEnemy.instance.spawnEnemy();
-                    actionTimer = actionDuration;
                 }
+                actionTimer = actionDuration;
             }
         }
     }
@@ -64,7 +80,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
             float hitChance = Random.value; //0.0 - 1.0
             if (hitChance < 0.3f)
             {
-                animator.SetTrigger("GetHit");
+                anim.SetTrigger("GetHit");
             }
 
             if (currentHealth <= 0)
@@ -92,7 +108,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public void Died()
     {
         agent.enabled = false;
-        animator.SetTrigger("Dead");
+        anim.SetTrigger("Dead");
         Instantiate(WeaponGate,transform.position,transform.rotation);
     }
 }
