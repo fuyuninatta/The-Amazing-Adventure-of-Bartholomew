@@ -38,11 +38,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
                 PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
                 if (transform.parent != null)
                 {
-                    Destroy(transform.parent.gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
+                    transform.parent.GetComponent<EnemyController>().Dead();
                 }
             }
         }
