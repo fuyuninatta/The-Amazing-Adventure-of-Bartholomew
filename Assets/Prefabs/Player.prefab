@@ -227,7 +227,7 @@ MonoBehaviour:
   - {fileID: 5717359849826045965}
   - {fileID: 4985215277482914066}
   currentGun: 0
-  maxGunIndex: 3
+  maxGunIndex: 1
   BowSupply: 10
   CrossbowSupply: 10
   ManaSupply: 10
