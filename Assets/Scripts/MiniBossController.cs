@@ -109,8 +109,10 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     public void Died()
     {
+        Debug.Log("drop item");
         agent.enabled = false;
         anim.SetTrigger("Dead");
-        Instantiate(WeaponGate,transform.position,transform.rotation);
+        Vector3 spawnItemPos = transform.position + new Vector3 (0.0f,-0.25f,3.0f);
+        Instantiate(WeaponGate,spawnItemPos,transform.rotation);
     }
 }
