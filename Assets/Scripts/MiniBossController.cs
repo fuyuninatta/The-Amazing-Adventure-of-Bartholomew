@@ -107,6 +107,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     public void Died()
     {
+        Debug.Log("drop item");
         agent.enabled = false;
         anim.SetTrigger("Dead");
         Instantiate(WeaponGate,transform.position,transform.rotation);

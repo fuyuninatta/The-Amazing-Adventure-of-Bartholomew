@@ -80,15 +80,6 @@ public class PlayerController : MonoBehaviour
         //debug only
         PlayerPrefs.SetInt("maxGunIndex",3);
         PlayerPrefs.SetInt("maxHealth", 100);
-
-        if(SceneManager.GetActiveScene().name != "LastScene")
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
     }
 
     // Update is called once per frame
