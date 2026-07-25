@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 868cb92a2d1698440b1d9757b666e10b
+  - enabled: 1
+    path: Assets/Scenes/LastScene.unity
+    guid: 9265ca203dd04c94989ed05a06cabf90
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

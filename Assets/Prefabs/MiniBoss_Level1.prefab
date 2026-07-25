@@ -85,8 +85,8 @@ MonoBehaviour:
   GetHitSfx: {fileID: 0}
   DeathSfx: {fileID: 0}
   agent: {fileID: 7388471650735534754}
-  animator: {fileID: 0}
-  WeaponGate: {fileID: 0}
+  anim: {fileID: 8727572338041934720}
+  WeaponGate: {fileID: 7212345242401409229, guid: 93f7bca0f58f1a945a76bbf334803b44, type: 3}
   actionTimer: 0
   actionDuration: 5
   freeroamRange: 10
@@ -323,7 +323,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5186913910732760183, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -434,5 +435,10 @@ PrefabInstance:
 --- !u!4 &8727572338034687072 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
+  m_PrefabInstance: {fileID: 8727572338034550496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8727572338041934720 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: e4299bf26a09e9049839e1a1b75e562c, type: 3}
   m_PrefabInstance: {fileID: 8727572338034550496}
   m_PrefabAsset: {fileID: 0}
