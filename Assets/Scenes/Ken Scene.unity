@@ -1306,6 +1306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage2_Skeleton Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 2032783186345831952, guid: 771f9690319ee624487085dc758c0f98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1362,6 +1366,10 @@ PrefabInstance:
     - target: {fileID: 2032783186345831952, guid: 94b299bc6f486f84599b0f4a083c9ffa, type: 3}
       propertyPath: m_Name
       value: Stage2_Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032783186345831952, guid: 94b299bc6f486f84599b0f4a083c9ffa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3626,6 +3634,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1309896498
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.721438
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.145
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -27.76564
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918957675890546877, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032783186345831952, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
+      propertyPath: m_Name
+      value: Stage2_Skeleton Ranger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 462d2c957cea35f4e8b16269d07d8682, type: 3}
 --- !u!1001 &1458915562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8631,7 +8696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8409552012762809934, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -9019,3 +9084,4 @@ SceneRoots:
   - {fileID: 5486253542797367621}
   - {fileID: 6097818593171119053}
   - {fileID: 245076462}
+  - {fileID: 1309896498}
