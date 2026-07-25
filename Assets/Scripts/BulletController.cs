@@ -91,7 +91,7 @@ public class BulletController : MonoBehaviour
                 float offset = 0.7f;
                 Vector3 newPosition = transform.position - transform.forward * offset;
 
-                Instantiate(impactEffect, newPosition, transform.rotation);
+                EffectObjectPoolManager.Instance.GetEffect(impactEffect.name, newPosition, transform.rotation);
             }
 
             if (remainingPierces > 0)

@@ -8,8 +8,8 @@ public class EnemyController : MonoBehaviour
     //public float moveSpeed;
     //public Rigidbody rb;
     private bool chasing;
-    public float distanceToChase = 10f, distanceToLose = 15f, distanceToStop = 2f;
-    private Vector3 targetPoint, originalPoint;
+    public float distanceToChase = 10f, distanceToLose = 15f, distanceToStop = 2f, distanceToDestroy = 50f;
+    private Vector3 targetPoint, originalPoint; 
 
     public NavMeshAgent agent;
 
@@ -37,6 +37,9 @@ public class EnemyController : MonoBehaviour
     private float knockbackTimer;
     private Vector3 knockbackVel;
     public float KnockbackForce = 8f;
+
+    //decide the enemy is melee or not
+    public bool isMelee = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -142,7 +145,9 @@ public class EnemyController : MonoBehaviour
                         Vector3 targetDir = PlayerController.instance.transform.position - transform.position;//get direction
                         float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
 
-                        if (Math.Abs(angle) <= 30)//only shoot when angle is less than 30
+                        //only shoot when angle is less than 30
+                        //for melee enemy, it will only attack when it reach the distance to stop
+                        if (Math.Abs(angle) <= 30 && (!isMelee || Vector3.Distance(transform.position, targetPoint) <= distanceToStop))
                         {
                             // Instantiate(bullet, firePoint.position, firePoint.rotation);
                             GetBullet(firePoint.position, firePoint.rotation);
@@ -229,5 +234,15 @@ public class EnemyController : MonoBehaviour
         //calculate knockback power
         knockbackVel = dir * force;
         knockbackTimer = force * 0.02f;
+    }
+
+    public void Dead()
+    {
+        agent.enabled = false;
+        anim.SetTrigger("IsDead");
+        if(Vector3.Distance(transform.position,targetPoint) >= distanceToDestroy)
+        {
+            Destroy(gameObject);
+        }
     }
 }
