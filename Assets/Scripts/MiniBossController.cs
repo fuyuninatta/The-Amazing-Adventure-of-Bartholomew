@@ -17,12 +17,15 @@ public class MiniBossController : MonoBehaviour, IDamagable
     //UI
     private HealthBar healthBar;
 
+    private Collider hitbox;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = MaxHealth;
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
+        hitbox = GetComponentInChildren<Collider>();
     }
 
     // Update is called once per frame
@@ -32,12 +35,10 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
         if (agent.remainingDistance < 0.25f)
         {
-            Debug.Log("111");
             anim.SetBool("isMoving", false);
         }
         else
         {
-            Debug.Log("222");
             anim.SetBool("isMoving", true);
         }
 
@@ -58,17 +59,18 @@ public class MiniBossController : MonoBehaviour, IDamagable
         {
             agent.ResetPath();
 
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                RandomAction();
+            //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            //{
+            RandomAction();
+
                 if (action)//summon enemies
                 {
                     Debug.Log("summon");
-                    anim.SetTrigger("fireShot");
+                    anim.SetTrigger("Summon");
                     SummonEnemy.instance.spawnEnemy();
                 }
-                actionTimer = actionDuration;
-            }
+             actionTimer = actionDuration;
+            //}
         }
     }
 
@@ -111,6 +113,8 @@ public class MiniBossController : MonoBehaviour, IDamagable
     {
         Debug.Log("drop item");
         agent.enabled = false;
+        hitbox.enabled = false;
+        anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
         Vector3 spawnItemPos = transform.position + new Vector3 (0.0f,-0.25f,3.0f);
         Instantiate(WeaponGate,spawnItemPos,transform.rotation);
