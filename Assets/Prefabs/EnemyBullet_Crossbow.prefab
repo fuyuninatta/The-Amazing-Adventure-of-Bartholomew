@@ -109,7 +109,7 @@ MonoBehaviour:
   moveSpeed: 15
   lifeTime: 5
   rb: {fileID: 406882414769806258}
-  impactEffect: {fileID: 7014957094343536532, guid: 1869080c49e5a1243b90c04bedb00187, type: 3}
+  impactEffect: {fileID: 447409866740539227, guid: da34d66431c8cd04aa98411a543a83bf, type: 3}
   attackPlayer: 1
   damage: 1
   pierceCount: 0
