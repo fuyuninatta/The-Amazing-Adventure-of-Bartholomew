@@ -13,7 +13,24 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //change mouse cursor mode
+        if (SceneManager.GetActiveScene().name != "LastScene" && SceneManager.GetActiveScene().name != "StartScene")
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        //remove last level data
+        if(SceneManager.GetActiveScene().name == "StartScene")
+        {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+        }
     }
 
     // Update is called once per frame

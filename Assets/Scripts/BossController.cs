@@ -285,7 +285,7 @@ public class BossController : MonoBehaviour, IDamagable
         animator.SetBool("Dead",true);
         died = true;
         hitbox.SetActive(false);
-        FinalGate.SetActive(true);        
+        FinalGate.SetActive(false);        
     }
 
     public void resetanimTrigger()

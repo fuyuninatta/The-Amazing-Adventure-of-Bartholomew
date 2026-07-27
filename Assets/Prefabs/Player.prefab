@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5053701831920036581}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   - {fileID: 5717359849826045965}
   - {fileID: 4985215277482914066}
   currentGun: 0
-  maxGunIndex: 3
+  maxGunIndex: 1
   BowSupply: 10
   CrossbowSupply: 10
   ManaSupply: 10

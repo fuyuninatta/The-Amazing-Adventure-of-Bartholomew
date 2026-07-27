@@ -398,7 +398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 772581022720116576, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4197053108501643221, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_Name
@@ -406,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8768226156380646760, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_Pivot.x
@@ -488,10 +488,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5186913910732760183, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3735254061448895749, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2826275309843899935}
   m_SourcePrefab: {fileID: 100100000, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
 --- !u!224 &1578683391010606427 stripped
 RectTransform:
@@ -520,3 +524,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &6886050915621240118 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3735254061448895749, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
+  m_PrefabInstance: {fileID: 7802032349476315187}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2826275309843899935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886050915621240118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db036f8d3a1f720409b91ad5e5ab497c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MiniBossHealthBar
+  healthSlider: {fileID: 1823810981158622027}
+  easeHealthSlider: {fileID: 6804990744678042869}
