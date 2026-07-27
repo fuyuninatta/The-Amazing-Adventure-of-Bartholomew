@@ -127,12 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e27c718a8709649ab0f8f91a04d8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  moveSpeed: 15
+  moveSpeed: 8
   lifeTime: 5
   rb: {fileID: 7749872265384852243}
   impactEffect: {fileID: 7904898002847524615, guid: a2ccf81a1d5b163448ebdf66b5e746d6, type: 3}
   attackPlayer: 1
-  damage: 10
+  damage: 20
   pierceCount: 0
   KnockBackPower: 0
   shooter: {fileID: 0}

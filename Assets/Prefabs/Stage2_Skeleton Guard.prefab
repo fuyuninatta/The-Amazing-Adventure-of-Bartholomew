@@ -78,7 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688a3a172272ddf43aa8d06e37a6fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthController
-  currentHealth: 6
+  currentHealth: 160
+  maxHealth: 160
   GetHitSfx: {fileID: 0}
   DeathSfx: {fileID: 0}
 --- !u!114 &22281026322173501
@@ -96,6 +97,7 @@ MonoBehaviour:
   distanceToChase: 10
   distanceToLose: 15
   distanceToStop: 1.5
+  distanceToDestroy: 50
   agent: {fileID: 7388471650735534754}
   keepChasingTime: 5
   bulletPrefab: {fileID: 3390670577263124499, guid: 09691064ee987d346bbeca6c10f56980, type: 3}
@@ -107,6 +109,7 @@ MonoBehaviour:
   anim: {fileID: 2023890906349000227}
   ShootSfx: {fileID: 0}
   KnockbackForce: 8
+  isMelee: 0
 --- !u!195 &7388471650735534754
 NavMeshAgent:
   m_ObjectHideFlags: 0
