@@ -251,11 +251,12 @@ public class EnemyController : MonoBehaviour
     {
         agent.enabled = false;
         isDead = true;
-        anim.SetTrigger("IsDead");
+        anim.SetTrigger("Dead");
     }
 
     public void GetHitAnim()
     {
+        agent.isStopped = true;
         anim.SetTrigger("GetHit");
     }
 }
