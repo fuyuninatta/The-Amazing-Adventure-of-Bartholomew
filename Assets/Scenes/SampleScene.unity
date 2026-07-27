@@ -326,14 +326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniBoss_Stage2
       objectReference: {fileID: 0}
-    - target: {fileID: 2218862898741257708, guid: ffa177584149ea543a05923fac086640, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 2218862898741257708, guid: ffa177584149ea543a05923fac086640, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.06
-      objectReference: {fileID: 0}
     - target: {fileID: 7421546590048134995, guid: ffa177584149ea543a05923fac086640, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -750,14 +742,6 @@ PrefabInstance:
     - target: {fileID: 7421546590048134995, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9075808479822864161, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.122
-      objectReference: {fileID: 0}
-    - target: {fileID: 9075808479822864161, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.602
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2159,7 +2143,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1862782818262849064, guid: cd97c1b2ce9e71e4f84de045994b6a40, type: 3}
       propertyPath: effectPrefabs.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1862782818262849064, guid: cd97c1b2ce9e71e4f84de045994b6a40, type: 3}
       propertyPath: 'effectPrefabs.Array.data[0]'
@@ -2169,6 +2153,10 @@ PrefabInstance:
       propertyPath: 'effectPrefabs.Array.data[1]'
       value: 
       objectReference: {fileID: 7014957094343536532, guid: 6b56fea45a0026441aa350cf830ead4d, type: 3}
+    - target: {fileID: 1862782818262849064, guid: cd97c1b2ce9e71e4f84de045994b6a40, type: 3}
+      propertyPath: 'effectPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 7904898002847524615, guid: 07191e3454693634d9ba0bebdedaa2d2, type: 3}
     - target: {fileID: 3201073969119544844, guid: cd97c1b2ce9e71e4f84de045994b6a40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.01014

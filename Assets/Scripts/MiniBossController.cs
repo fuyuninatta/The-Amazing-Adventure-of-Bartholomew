@@ -20,11 +20,8 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     private Collider hitbox;
 
-<<<<<<< Updated upstream
     private bool isDead = false;
-=======
     private Transform spawnitemPos;
->>>>>>> Stashed changes
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
