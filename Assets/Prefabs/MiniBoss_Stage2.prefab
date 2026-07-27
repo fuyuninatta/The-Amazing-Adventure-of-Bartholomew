@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3557917549316584416}
   - component: {fileID: 7388471650735534754}
   m_Layer: 0
-  m_Name: Stage2_Skeleton Sorcerer
+  m_Name: MiniBoss_Stage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,31 +249,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07391278
+      value: 0.045076035
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07391278
+      value: -0.6279748
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7032332
+      value: 0.041165553
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7032332
+      value: -0.7758359
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: 0.416
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -168
+      value: -173.013
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
