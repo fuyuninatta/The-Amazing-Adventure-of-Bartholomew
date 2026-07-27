@@ -17,7 +17,10 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity;
 
     //fallen damage
-    public float fallTimer, SafeFallTime = 1.5f , DeathFallTime = 10, fallDamageRatio = 0.25f;
+    public float minFallSpeed = -15f;
+    public float lethalFallSpeed = -60f;
+    public float maxFallSpeed;
+    public float fallDamageRatio = 1.0f;
 
     //dash
     public float dashSpeed = 20f;    
@@ -134,17 +137,21 @@ public class PlayerController : MonoBehaviour
                 moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
 
                 ApplyFallDamage();
-                fallTimer = 0;
+                maxFallSpeed = 0f;
             }
             else
             {
-                fallTimer += Time.deltaTime;
+                if (charCon.velocity.y < maxFallSpeed)
+                {
+                    maxFallSpeed = charCon.velocity.y;
+                }
             }
         }
-        
-        if(fallTimer > DeathFallTime)
+
+        if (Input.GetKeyDown(KeyCode.P)|| (maxFallSpeed < lethalFallSpeed && !charCon.isGrounded))
         {
-            GameManager.instance.PlayerDied();
+            maxFallSpeed = 0f;
+            PlayerHeathController.instance.DamagePlayer(PlayerHeathController.instance.currentHealth);
         }
 
         if (!isClimbing && Input.GetKeyDown(KeyCode.Space) && jumping > 0)
@@ -335,9 +342,14 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyFallDamage()
     {
-        if(fallTimer > SafeFallTime)
+        if (maxFallSpeed < minFallSpeed)
         {
-            float damagePercent = fallTimer / DeathFallTime;
+            //calculaate damage ratio
+            float speedDifference = Mathf.Abs(maxFallSpeed) - Mathf.Abs(minFallSpeed);
+            float maxDifference = Mathf.Abs(lethalFallSpeed) - Mathf.Abs(minFallSpeed);
+            float damagePercent = Mathf.Clamp01(speedDifference / maxDifference);
+
+            //calculate damage
             float damage = damagePercent * PlayerHeathController.instance.maxHealth * fallDamageRatio;
 
             PlayerHeathController.instance.DamagePlayer(damage);
