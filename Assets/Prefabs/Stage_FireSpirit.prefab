@@ -66,20 +66,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   distanceToChase: 10
   distanceToLose: 15
-  distanceToStop: 1.5
+  distanceToStop: 1
   distanceToDestroy: 50
   agent: {fileID: 7388471650735534754}
   keepChasingTime: 5
   bulletPrefab: {fileID: 3390670577263124499, guid: 09691064ee987d346bbeca6c10f56980, type: 3}
   bulletPoolSize: 5
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 9153492269055825368}
   fireRate: 1
   waitBetweenShots: 1
   timeToShoot: 1
-  anim: {fileID: 0}
+  anim: {fileID: 6750591644132997019}
   ShootSfx: {fileID: 0}
   KnockbackForce: 8
-  isMelee: 0
+  isMelee: 1
 --- !u!195 &7388471650735534754
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -167,6 +167,37 @@ CapsuleCollider:
   m_Height: 1.24
   m_Direction: 1
   m_Center: {x: 0, y: -0.4, z: 0}
+--- !u!1 &7559812143832131465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9153492269055825368}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9153492269055825368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559812143832131465}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.39909694, y: 0.31815106, z: 0.7914714, w: -0.33626574}
+  m_LocalPosition: {x: -0.0359, y: 0.1802, z: -0.035}
+  m_LocalScale: {x: 4.0456486, y: 2.6970997, z: 2.697099}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8729794056040903978}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7578180945177438570
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,14 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 66513b3341075be408e6a67c615209d1, type: 2}
     - target: {fileID: 5866666021909216657, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'arm_stretch.l'\n\tTransform 'spine_02.x'\n\tTransform
-        'spine_01.x'\n\tTransform 'thigh_stretch.r'\n\tTransform 'root.x'\n\tTransform
-        'shoulder.r'\n\tTransform 'foot.l'\n\tTransform 'hand.r'\n\tTransform 'arm_stretch.r'\n\tTransform
-        'forearm_stretch.r'\n\tand more ...\n\tFrom animation clip 'Monster38_Attack03'\n\tFrom
-        animation clip 'Monster38_Die01'\n\tFrom animation clip 'Monster38_Idle02'\n\tFrom
-        animation clip 'Monster38_Run'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6983593007069592076, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -272,12 +296,25 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6ad5374c672884cabc4d85fef59e96, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -729007487329059040, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 9153492269055825368}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
 --- !u!4 &814807939620122081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
+  m_PrefabInstance: {fileID: 919999846692473354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6750591644132997019 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
+  m_PrefabInstance: {fileID: 919999846692473354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8729794056040903978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -729007487329059040, guid: d2c9527003d385c49a6cdf41520b5ffd, type: 3}
   m_PrefabInstance: {fileID: 919999846692473354}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2125469437577910334
