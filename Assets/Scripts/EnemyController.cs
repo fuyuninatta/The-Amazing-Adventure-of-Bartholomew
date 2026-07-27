@@ -245,4 +245,9 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void GetHitAnim()
+    {
+        anim.SetTrigger("GetHit");
+    }
 }

@@ -8,11 +8,14 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
 
     public AudioClip GetHitSfx, DeathSfx;
 
+    private EnemyController enemyController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar = gameObject.GetComponentInChildren<HealthBar>();
+        healthBar = GetComponentInChildren<HealthBar>();
+        enemyController = GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,9 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
 
             //UI
             healthBar.healthSlider.value = currentHealth;
+
+            //put get hit animation
+            enemyController.GetHitAnim();
 
             //dead
             if (currentHealth <= 0)
