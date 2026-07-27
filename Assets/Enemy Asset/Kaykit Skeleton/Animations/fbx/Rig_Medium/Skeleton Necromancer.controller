@@ -154,7 +154,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skeleton Sorcerer
+  m_Name: Skeleton Necromancer
   serializedVersion: 6
   m_AnimatorParameters:
   - m_Name: isMoving

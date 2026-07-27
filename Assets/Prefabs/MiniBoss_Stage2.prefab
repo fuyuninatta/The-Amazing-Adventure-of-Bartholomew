@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3557917549316584416}
   - component: {fileID: 7388471650735534754}
   m_Layer: 0
-  m_Name: Stage2_Skeleton Sorcerer
+  m_Name: MiniBoss_Stage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2032783186345831952}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.6
+  m_Radius: 1.27
   m_Speed: 3.5
   m_Acceleration: 25
   avoidancePriority: 50
@@ -122,7 +122,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 3.45
   m_BaseOffset: 0.8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -219,8 +219,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1.8987149
+  m_Radius: 0.57
+  m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: -0.05064255, z: 0}
 --- !u!1001 &1667146880857576687
@@ -249,31 +249,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.07391278
+      value: 0.045076035
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.07391278
+      value: -0.6279748
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7032332
+      value: 0.041165553
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7032332
+      value: -0.7758359
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: 0.416
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -168
+      value: -173.013
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -398,7 +398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 772581022720116576, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4197053108501643221, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_Name
@@ -406,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768226156380646760, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_Pivot.x

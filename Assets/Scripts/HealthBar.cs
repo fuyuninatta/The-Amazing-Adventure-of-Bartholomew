@@ -29,6 +29,11 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (healthSlider.value != enemyHealth.currentHealth)
+        {
+            healthSlider.value = enemyHealth.currentHealth;
+        }
+
         if (healthSlider.value != easeHealthSlider.value)
         {
             easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, enemyHealth.currentHealth, lerpSpeed * Time.deltaTime);
