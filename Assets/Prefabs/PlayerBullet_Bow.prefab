@@ -111,7 +111,7 @@ MonoBehaviour:
   rb: {fileID: 3906580429952960910}
   impactEffect: {fileID: 7014957094343536532, guid: 1869080c49e5a1243b90c04bedb00187, type: 3}
   attackPlayer: 0
-  damage: 1
+  damage: 40
   pierceCount: 0
   KnockBackPower: 5
   shooter: {fileID: 0}
