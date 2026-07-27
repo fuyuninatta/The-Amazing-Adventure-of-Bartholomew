@@ -97,14 +97,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   distanceToChase: 10
   distanceToLose: 15
-  distanceToStop: 2
+  distanceToStop: 1
   distanceToDestroy: 50
   agent: {fileID: 7388471650735534754}
   keepChasingTime: 5
   bulletPrefab: {fileID: 3390670577263124499, guid: 09691064ee987d346bbeca6c10f56980, type: 3}
   bulletPoolSize: 5
   firePoint: {fileID: 2081046324836347822}
-  fireRate: 1
+  fireRate: 1.3
   waitBetweenShots: 1
   timeToShoot: 1
   anim: {fileID: 5165080580148782827}
