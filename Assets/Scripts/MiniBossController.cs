@@ -20,7 +20,11 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     private Collider hitbox;
 
+<<<<<<< Updated upstream
     private bool isDead = false;
+=======
+    private Transform spawnitemPos;
+>>>>>>> Stashed changes
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +33,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
+        spawnitemPos = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
@@ -121,17 +126,8 @@ public class MiniBossController : MonoBehaviour, IDamagable
         hitbox.enabled = false;
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
-
-        //position of droping item base on boss
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            Vector3 spawnItemPos = transform.position + new Vector3(0.0f, -2.75f, -4.5f);//infront of the tree
-            Instantiate(WeaponGate, spawnItemPos, transform.rotation);
-        }
-        else
-        {
-            Vector3 spawnItemPos = transform.position + new Vector3(0.0f, -0.25f, 3.0f);//infront of the necromancer
-            Instantiate(WeaponGate, spawnItemPos, transform.rotation);
-        }
+        
+        //spawn item
+        Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
     }
 }
