@@ -20,6 +20,8 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     private Collider hitbox;
 
+    private bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,6 +34,8 @@ public class MiniBossController : MonoBehaviour, IDamagable
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
+
         Vector3 playerPos = PlayerController.instance.transform.position;
 
         if (agent.remainingDistance < 0.25f)
@@ -60,8 +64,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
         {
             agent.ResetPath();
 
-            //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            //{
             RandomAction();
 
                 if (action)//summon enemies
@@ -71,7 +73,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
                     SummonEnemy.instance.spawnEnemy();
                 }
              actionTimer = actionDuration;
-            //}
         }
     }
 
@@ -86,6 +87,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
             {
                 PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
                 Died();
+                isDead = true;
             }
             else
             {
