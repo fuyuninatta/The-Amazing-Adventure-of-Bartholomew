@@ -18,6 +18,10 @@ public class BossController : MonoBehaviour, IDamagable
     public float fireRate = 1.5f;
     private bool isAttacking = false;
 
+    //for turning
+    Vector3 targetDir;
+    float angle;
+
     public AudioClip ScreamSfx, BiteSfx, ShootFireSfx, GetHitSfx, DeathSfx;
 
     public NavMeshAgent agent;
@@ -40,7 +44,7 @@ public class BossController : MonoBehaviour, IDamagable
     private bool isReturning = false;
 
     //UI
-    private HealthBar healthBar;
+    private BossHealthBar healthBar;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,7 +55,7 @@ public class BossController : MonoBehaviour, IDamagable
         originalRot = transform.rotation;
 
         //get UI
-        healthBar = gameObject.GetComponent<HealthBar>();
+        healthBar = gameObject.GetComponent<BossHealthBar>();
     }
 
     // Update is called once per frame
@@ -89,19 +93,32 @@ public class BossController : MonoBehaviour, IDamagable
                 isAttacking = true;
                 agent.velocity = Vector3.zero;
                 agent.destination = transform.position;
-                //either bite attack
-                animator.SetTrigger("Bite");
 
+                //turn dragon
+                Vector3 lookDir = new Vector3(playerPos.x, transform.position.y, playerPos.z);
+                Quaternion targetRotation = Quaternion.LookRotation(lookDir - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+
+                targetDir = PlayerController.instance.transform.position - transform.position;//get direction
+                angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
+                if (Mathf.Abs(angle) <= 30)//only attack when angle is less than 30
+                {
+                    animator.SetTrigger("Bite");
+                }
             }
             else if (Vector3.Distance(transform.position, playerPos) <= fireDistance)//shoot fire
             {
                 isAttacking = true;
                 agent.velocity = Vector3.zero;
+
+                //turn dragon
                 Vector3 lookDir = new Vector3(playerPos.x, transform.position.y, playerPos.z);
                 Quaternion targetRotation = Quaternion.LookRotation(lookDir - transform.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
 
-                if (fireCounter <= 0)
+                Vector3 targetDir = PlayerController.instance.transform.position - transform.position;//get direction
+                float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
+                if (fireCounter <= 0 && Mathf.Abs(angle) <= 30)//only shoot when angle is less than 30
                 {
                     animator.SetTrigger("GroundFire");
                     Invoke("Fire", 0.4f);
@@ -156,7 +173,9 @@ public class BossController : MonoBehaviour, IDamagable
             {
                 transform.LookAt(playerPos);
                 agent.isStopped = true;
-                if (fireCounter <= 0)
+                targetDir = PlayerController.instance.transform.position - transform.position;//get direction
+                angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
+                if (fireCounter <= 0 && Mathf.Abs(angle) <= 30)//only shoot when angle is less than 30
                 {
                     animator.SetTrigger("AirFire");
                     Invoke("Fire", 0.4f);
@@ -222,17 +241,9 @@ public class BossController : MonoBehaviour, IDamagable
             PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
 
             float hitChance = Random.value; //0.0 - 1.0
-            if (hitChance < 0.3f)
+            if (hitChance < 0.3f && !phase2)//only phase 1 have get hit animation
             {
-                if(phase2)
-                {
-                    animator.SetTrigger("GetHit2");
-                }
-                else
-                {
-                    animator.SetTrigger("GetHit1");
-                }
-                
+                animator.SetTrigger("GetHit"); 
             }
 
             if (currentHealth <= 0)

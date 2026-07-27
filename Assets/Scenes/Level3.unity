@@ -40734,15 +40734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897102825303149579, guid: 9da4c18e8717d4e45a35807cb97cb5a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.9
+      value: 52.615658
       objectReference: {fileID: 0}
     - target: {fileID: 6897102825303149579, guid: 9da4c18e8717d4e45a35807cb97cb5a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 116.9
+      value: 102.26
       objectReference: {fileID: 0}
     - target: {fileID: 6897102825303149579, guid: 9da4c18e8717d4e45a35807cb97cb5a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 7.75
       objectReference: {fileID: 0}
     - target: {fileID: 6897102825303149579, guid: 9da4c18e8717d4e45a35807cb97cb5a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -86303,22 +86303,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2193743011918747984, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042420989025692847, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042420989025692847, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4042420989025692847, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4042420989025692847, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 89.02
@@ -86359,21 +86343,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4512456216578166041, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_Radius
-      value: 2.53
-      objectReference: {fileID: 0}
     - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_Name
       value: BossDragon
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6949945989765034527, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8578137340943137717, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: FinalGate
