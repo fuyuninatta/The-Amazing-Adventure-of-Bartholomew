@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4042420989025692847
 Transform:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.481756, y: 0, z: -19.47121}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8409552012762885528}
@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe5145c3f7cdf146a6d7b594bc1346d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
-  currentHealth: 0
-  MaxHealth: 10
+  currentHealth: 2560
+  MaxHealth: 2560
   meleeDistance: 5.5
   hitbox: {fileID: 7995169551160852399}
   FinalGate: {fileID: 0}
@@ -105,7 +105,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6484716859071693240}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 3.25
+  m_Radius: 2.53
   m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -258,7 +258,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 772581022720116576, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4197053108501643221, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_Name
@@ -266,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8768226156380646760, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_Pivot.x

@@ -214,9 +214,9 @@ MonoBehaviour:
   anim: {fileID: 363883347041310829}
   mouseSensitivity: 2
   fallTimer: 0
-  SafeFallTime: 1.5
-  DeathFallTime: 10
-  fallDamageRatio: 0.25
+  SafeFallTime: 3
+  DeathFallTime: 15
+  fallDamageRatio: 50
   dashSpeed: 25
   dashDuration: 0.5
   dashTimer: 0
