@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 
 public class MiniBossController : MonoBehaviour, IDamagable
 {
@@ -121,17 +120,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
         hitbox.enabled = false;
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
-
-        //position of droping item base on boss
-        if (SceneManager.GetActiveScene().name == "Level1")
-        {
-            Vector3 spawnItemPos = transform.position + new Vector3(0.0f, -2.75f, -4.5f);//infront of the tree
-            Instantiate(WeaponGate, spawnItemPos, transform.rotation);
-        }
-        else
-        {
-            Vector3 spawnItemPos = transform.position + new Vector3(0.0f, -0.25f, 3.0f);//infront of the necromancer
-            Instantiate(WeaponGate, spawnItemPos, transform.rotation);
-        }
+        Vector3 spawnItemPos = transform.position + new Vector3 (0.0f,-0.25f,3.0f);
+        Instantiate(WeaponGate,spawnItemPos,transform.rotation);
     }
 }
