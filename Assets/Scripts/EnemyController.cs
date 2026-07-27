@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     //public float moveSpeed;
     //public Rigidbody rb;
     private bool chasing;
-    public float distanceToChase = 10f, distanceToLose = 15f, distanceToStop = 2f, distanceToDestroy = 50f;
+    public float distanceToChase = 10f, distanceToLose = 15f, distanceToStop = 2f, distanceToDestroy = 10f;
     private Vector3 targetPoint, originalPoint; 
 
     public NavMeshAgent agent;
@@ -41,6 +41,8 @@ public class EnemyController : MonoBehaviour
     //decide the enemy is melee or not
     public bool isMelee = false;
 
+    private bool isDead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +57,18 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        targetPoint = PlayerController.instance.transform.position;
+        targetPoint.y = transform.position.y;//replacing his y target to be his y axis itself
+
+        if (isDead)
+        {
+            if (Vector3.Distance(transform.position, targetPoint) >= distanceToDestroy)
+            {
+                Destroy(gameObject);
+            }
+            return;
+        }
+
         //knockback
         if (knockbackTimer > 0)
         {
@@ -62,9 +76,6 @@ public class EnemyController : MonoBehaviour
             agent.Move(knockbackVel * Time.deltaTime);
             return;//skip follow player
         }
-
-        targetPoint = PlayerController.instance.transform.position;
-        targetPoint.y = transform.position.y;//replacing his y target to be his y axis itself
 
         if (!chasing)//chasing is false
         {
@@ -238,12 +249,9 @@ public class EnemyController : MonoBehaviour
 
     public void Dead()
     {
-        //agent.enabled = false;
-        //anim.SetTrigger("IsDead");
-        //if(Vector3.Distance(transform.position,targetPoint) >= distanceToDestroy)
-        //{
-            Destroy(gameObject);
-       // }
+        agent.enabled = false;
+        isDead = true;
+        anim.SetTrigger("IsDead");
     }
 
     public void GetHitAnim()
