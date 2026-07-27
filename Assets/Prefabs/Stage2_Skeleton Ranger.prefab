@@ -101,7 +101,7 @@ MonoBehaviour:
   distanceToDestroy: 25
   agent: {fileID: 7388471650735534754}
   keepChasingTime: 5
-  bulletPrefab: {fileID: 3390670577263124499, guid: 33dbdeacb3e044041aed7cdcdf2cdf68, type: 3}
+  bulletPrefab: {fileID: 6039535222475662574, guid: 7b60b0687d75a5c41b8d20d6787f7c74, type: 3}
   bulletPoolSize: 20
   firePoint: {fileID: 2081046324836347822}
   fireRate: 1

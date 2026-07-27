@@ -35,14 +35,16 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
             //UI
             healthBar.healthSlider.value = currentHealth;
 
-            //put get hit animation
-            enemyController.GetHitAnim();
-
             //dead
             if (currentHealth <= 0)
             {
                 PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
                 transform.GetComponent<EnemyController>().Dead();
+            }
+            else
+            {
+                //put get hit animation
+                enemyController.GetHitAnim();
             }
         }
     }

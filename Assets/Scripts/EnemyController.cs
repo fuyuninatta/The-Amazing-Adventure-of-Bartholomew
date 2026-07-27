@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -250,13 +251,18 @@ public class EnemyController : MonoBehaviour
     public void Dead()
     {
         agent.enabled = false;
-        isDead = true;
         anim.SetTrigger("Dead");
+        isDead = true;
+        Collider hitbox = GetComponentInChildren<Collider>();
+        hitbox.enabled = false;
     }
 
     public void GetHitAnim()
     {
-        agent.isStopped = true;
-        anim.SetTrigger("GetHit");
+        if(!isDead)
+        {
+            agent.isStopped = true;
+            anim.SetTrigger("GetHit");
+        }  
     }
 }

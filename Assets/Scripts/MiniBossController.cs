@@ -81,16 +81,18 @@ public class MiniBossController : MonoBehaviour, IDamagable
             currentHealth -= damage;
             PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
 
-            float hitChance = Random.value; //0.0 - 1.0
-            if (hitChance < 0.3f)
-            {
-                anim.SetTrigger("GetHit");
-            }
-
             if (currentHealth <= 0)
             {
                 PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
                 Died();
+            }
+            else
+            {
+                float hitChance = Random.value; //0.0 - 1.0
+                if (hitChance < 0.3f)
+                {
+                    anim.SetTrigger("GetHit");
+                }
             }
         }
     }
