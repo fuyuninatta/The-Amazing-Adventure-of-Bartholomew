@@ -98,7 +98,7 @@ MonoBehaviour:
   distanceToChase: 10
   distanceToLose: 15
   distanceToStop: 2
-  distanceToDestroy: 50
+  distanceToDestroy: 25
   agent: {fileID: 7388471650735534754}
   keepChasingTime: 5
   bulletPrefab: {fileID: 3390670577263124499, guid: 33dbdeacb3e044041aed7cdcdf2cdf68, type: 3}
