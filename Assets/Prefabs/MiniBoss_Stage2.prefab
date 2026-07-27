@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25350cce45942d745ac237d6879524c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MiniBossController
-  currentHealth: 0
-  MaxHealth: 10
+  currentHealth: 640
+  MaxHealth: 640
   SummonSfx: {fileID: 0}
   GetHitSfx: {fileID: 0}
   DeathSfx: {fileID: 0}

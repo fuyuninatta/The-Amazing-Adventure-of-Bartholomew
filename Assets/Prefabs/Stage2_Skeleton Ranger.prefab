@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688a3a172272ddf43aa8d06e37a6fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthController
-  currentHealth: 6
-  maxHealth: 10
+  currentHealth: 80
+  maxHealth: 80
   GetHitSfx: {fileID: 0}
   DeathSfx: {fileID: 0}
 --- !u!114 &22281026322173501
@@ -104,7 +104,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6039535222475662574, guid: 7b60b0687d75a5c41b8d20d6787f7c74, type: 3}
   bulletPoolSize: 20
   firePoint: {fileID: 2081046324836347822}
-  fireRate: 0.3
+  fireRate: 1
   waitBetweenShots: 1
   timeToShoot: 1
   anim: {fileID: 6503513397374786464}
