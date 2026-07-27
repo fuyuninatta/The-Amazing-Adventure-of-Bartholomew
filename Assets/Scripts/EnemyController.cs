@@ -238,12 +238,12 @@ public class EnemyController : MonoBehaviour
 
     public void Dead()
     {
-        agent.enabled = false;
-        anim.SetTrigger("IsDead");
-        if(Vector3.Distance(transform.position,targetPoint) >= distanceToDestroy)
-        {
+        //agent.enabled = false;
+        //anim.SetTrigger("IsDead");
+        //if(Vector3.Distance(transform.position,targetPoint) >= distanceToDestroy)
+        //{
             Destroy(gameObject);
-        }
+       // }
     }
 
     public void GetHitAnim()
