@@ -63,7 +63,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2579338666012743283}
+  - {fileID: 6728676681874783689}
   - {fileID: 4302633291340252248}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688a3a172272ddf43aa8d06e37a6fd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthController
-  currentHealth: 6
-  maxHealth: 10
+  currentHealth: 80
+  maxHealth: 80
   GetHitSfx: {fileID: 0}
   DeathSfx: {fileID: 0}
 --- !u!114 &22281026322173501
@@ -107,10 +107,10 @@ MonoBehaviour:
   fireRate: 1
   waitBetweenShots: 1
   timeToShoot: 1
-  anim: {fileID: 9139802523544694781}
+  anim: {fileID: 0}
   ShootSfx: {fileID: 0}
   KnockbackForce: 8
-  isMelee: 0
+  isMelee: 1
 --- !u!195 &7388471650735534754
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -283,10 +283,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8667052616836904280, guid: c73ae6621f8832748a78dfb8aec6dd12, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: c095016dbebcc0a44be39f7455c0f6d5, type: 3}
-    - target: {fileID: 8667052616836904280, guid: c73ae6621f8832748a78dfb8aec6dd12, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a9ce43be9ec85b548bcc9825dd3d8748, type: 2}
@@ -307,12 +303,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3361834574544056098, guid: c73ae6621f8832748a78dfb8aec6dd12, type: 3}
   m_PrefabInstance: {fileID: 473044636495469221}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &9139802523544694781 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8667052616836904280, guid: c73ae6621f8832748a78dfb8aec6dd12, type: 3}
-  m_PrefabInstance: {fileID: 473044636495469221}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2265077546148119687
+--- !u!1001 &7045183521464807229
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -390,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369770229673349876, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.9
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4369770229673349876, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -417,8 +408,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}
---- !u!224 &2579338666012743283 stripped
+--- !u!224 &6728676681874783689 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4369770229673349876, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}
-  m_PrefabInstance: {fileID: 2265077546148119687}
+  m_PrefabInstance: {fileID: 7045183521464807229}
   m_PrefabAsset: {fileID: 0}
