@@ -50,7 +50,7 @@ MonoBehaviour:
   moveSpeed: 0
   lifeTime: 1
   rb: {fileID: 7749872265384852243}
-  impactEffect: {fileID: 7014957094343536532, guid: 6b56fea45a0026441aa350cf830ead4d, type: 3}
+  impactEffect: {fileID: 4122929912709593321, guid: 33dbdeacb3e044041aed7cdcdf2cdf68, type: 3}
   attackPlayer: 1
   damage: 25
   pierceCount: 0
@@ -102,7 +102,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 16
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7921704524777989267
 GameObject:
@@ -121,7 +121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4047996889132556684
 Transform:
   m_ObjectHideFlags: 0

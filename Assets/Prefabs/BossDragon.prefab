@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4042420989025692847
 Transform:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   animator: {fileID: 8409552012755234224}
   firePrefab: {fileID: 3390670577263124499, guid: aebc7bcc2710f294fa46907632d84b1e, type: 3}
   firePoolSize: 20
+  HealthBarGO: {fileID: 3384334641860780517}
 --- !u!195 &4512456216578166041
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 772581022720116576, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4197053108501643221, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_Name
@@ -266,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8768226156380646760, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_Pivot.x
@@ -364,6 +365,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &3384334641860780517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4197053108501643221, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
+  m_PrefabInstance: {fileID: 1497869078677249584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7043742537203821896 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8433299785142694776, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}

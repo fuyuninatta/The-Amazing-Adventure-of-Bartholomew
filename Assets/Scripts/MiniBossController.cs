@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class MiniBossController : MonoBehaviour, IDamagable
 {
@@ -10,6 +11,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public NavMeshAgent agent;
     public Animator anim;
     public GameObject WeaponGate;
+    public GameObject HealthBarGO;
 
     private bool action = false;//true:summon, false:free roam
     public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
@@ -19,6 +21,9 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     private Collider hitbox;
 
+    private bool isDead = false;
+    private Transform spawnitemPos;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,11 +31,14 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
+        spawnitemPos = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
+
         Vector3 playerPos = PlayerController.instance.transform.position;
 
         if (agent.remainingDistance < 0.25f)
@@ -59,8 +67,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
         {
             agent.ResetPath();
 
-            //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            //{
             RandomAction();
 
                 if (action)//summon enemies
@@ -70,7 +76,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
                     SummonEnemy.instance.spawnEnemy();
                 }
              actionTimer = actionDuration;
-            //}
         }
     }
 
@@ -81,16 +86,19 @@ public class MiniBossController : MonoBehaviour, IDamagable
             currentHealth -= damage;
             PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
 
-            float hitChance = Random.value; //0.0 - 1.0
-            if (hitChance < 0.3f)
-            {
-                anim.SetTrigger("GetHit");
-            }
-
             if (currentHealth <= 0)
             {
                 PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
                 Died();
+                isDead = true;
+            }
+            else
+            {
+                float hitChance = Random.value; //0.0 - 1.0
+                if (hitChance < 0.3f)
+                {
+                    anim.SetTrigger("GetHit");
+                }
             }
         }
     }
@@ -116,7 +124,10 @@ public class MiniBossController : MonoBehaviour, IDamagable
         hitbox.enabled = false;
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
-        Vector3 spawnItemPos = transform.position + new Vector3 (0.0f,-0.25f,3.0f);
-        Instantiate(WeaponGate,spawnItemPos,transform.rotation);
+        HealthBarGO.SetActive(false);
+        
+        //spawn item
+        Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
+        
     }
 }

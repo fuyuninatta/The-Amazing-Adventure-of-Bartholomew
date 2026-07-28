@@ -45,6 +45,7 @@ public class BossController : MonoBehaviour, IDamagable
 
     //UI
     private BossHealthBar healthBar;
+    public GameObject HealthBarGO;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -293,10 +294,11 @@ public class BossController : MonoBehaviour, IDamagable
     {
         agent.enabled = false;
         animator.SetTrigger("Land");
-        animator.SetBool("Dead",true);
+        animator.SetTrigger("Dead");
         died = true;
         hitbox.SetActive(false);
-        FinalGate.SetActive(false);        
+        FinalGate.SetActive(false);
+        HealthBarGO.SetActive(false);
     }
 
     public void resetanimTrigger()
