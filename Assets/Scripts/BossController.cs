@@ -44,7 +44,6 @@ public class BossController : MonoBehaviour, IDamagable
     private bool isReturning = false;
 
     //UI
-    private BossHealthBar healthBar;
     public GameObject HealthBarGO;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,14 +53,13 @@ public class BossController : MonoBehaviour, IDamagable
         PrepareFirePool();
         originalPos = transform.position;
         originalRot = transform.rotation;
-
-        //get UI
-        healthBar = gameObject.GetComponent<BossHealthBar>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (died) return;
+
         Vector3 playerPos = PlayerController.instance.transform.position;
         if (playerPos == null) return;//prevent error
 
@@ -69,8 +67,6 @@ public class BossController : MonoBehaviour, IDamagable
         {
             fireCounter -= Time.deltaTime;
         }
-
-        if(died) return;
 
         if (!phase2)
         {
@@ -241,16 +237,18 @@ public class BossController : MonoBehaviour, IDamagable
             currentHealth -= damage;
             PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
 
-            float hitChance = Random.value; //0.0 - 1.0
-            if (hitChance < 0.3f && !phase2)//only phase 1 have get hit animation
-            {
-                animator.SetTrigger("GetHit"); 
-            }
-
             if (currentHealth <= 0)
             {
                 PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
                 Died();
+            }
+            else
+            {
+                float hitChance = Random.value; //0.0 - 1.0
+                if (hitChance < 0.3f && !phase2)//only phase 1 have get hit animation
+                {
+                    animator.SetTrigger("GetHit");
+                }
             }
         }
     }
@@ -292,13 +290,16 @@ public class BossController : MonoBehaviour, IDamagable
     }
     public void Died()
     {
+        died = true;
         agent.enabled = false;
+
+        //set dead animation
         animator.SetTrigger("Land");
         animator.SetTrigger("Dead");
-        died = true;
+
         hitbox.SetActive(false);
-        FinalGate.SetActive(false);
         HealthBarGO.SetActive(false);
+        FinalGate.SetActive(false);
     }
 
     public void resetanimTrigger()

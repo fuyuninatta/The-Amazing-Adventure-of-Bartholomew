@@ -128,6 +128,5 @@ public class MiniBossController : MonoBehaviour, IDamagable
         
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
-        
     }
 }
