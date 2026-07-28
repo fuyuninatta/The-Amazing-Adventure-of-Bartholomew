@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class MiniBossController : MonoBehaviour, IDamagable
 {
@@ -20,6 +21,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     private Collider hitbox;
 
     private bool isDead = false;
+    private Transform spawnitemPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,6 +30,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
+        spawnitemPos = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
@@ -120,7 +123,8 @@ public class MiniBossController : MonoBehaviour, IDamagable
         hitbox.enabled = false;
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
-        Vector3 spawnItemPos = transform.position + new Vector3 (0.0f,-0.25f,3.0f);
-        Instantiate(WeaponGate,spawnItemPos,transform.rotation);
+        
+        //spawn item
+        Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
     }
 }
