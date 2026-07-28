@@ -111,6 +111,7 @@ MonoBehaviour:
   ShootSfx: {fileID: 0}
   KnockbackForce: 8
   isMelee: 0
+  HealthBarGO: {fileID: 1529758248570508420}
 --- !u!195 &7388471650735534754
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -508,6 +509,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}
+--- !u!1 &1529758248570508420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7778011041041284593, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}
+  m_PrefabInstance: {fileID: 9136608271557208437}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4787126359884430209 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4369770229673349876, guid: 33780de7c1ff616448faae8ce20e01e3, type: 3}

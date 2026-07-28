@@ -11,6 +11,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public NavMeshAgent agent;
     public Animator anim;
     public GameObject WeaponGate;
+    public GameObject HealthBarGO;
 
     private bool action = false;//true:summon, false:free roam
     public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
@@ -123,8 +124,10 @@ public class MiniBossController : MonoBehaviour, IDamagable
         hitbox.enabled = false;
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
+        HealthBarGO.SetActive(false);
         
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
+        
     }
 }

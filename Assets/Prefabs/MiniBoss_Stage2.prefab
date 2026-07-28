@@ -88,6 +88,7 @@ MonoBehaviour:
   agent: {fileID: 7388471650735534754}
   anim: {fileID: 9223209917599551964}
   WeaponGate: {fileID: 2084652387018137141, guid: 51e065d157f25e543ab8a24d492a2e73, type: 3}
+  HealthBarGO: {fileID: 6230886786601852902}
   actionTimer: 0
   actionDuration: 5
   freeroamRange: 10
@@ -545,6 +546,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &6230886786601852902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4197053108501643221, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
+  m_PrefabInstance: {fileID: 7802032349476315187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6804990744678042869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3618162993398770886, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}

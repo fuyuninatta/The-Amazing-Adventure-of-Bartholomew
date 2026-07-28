@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     //audio source
     public AudioSource audiosource;
+    public AudioClip pickupArrowSFX, pickupCrossbowArrowSFX, pickupManaSFX;
     
     //knockback by boss
     private float knockbackTimer;
@@ -79,10 +80,6 @@ public class PlayerController : MonoBehaviour
         AmmoUpdate();
 
         audiosource = GetComponent<AudioSource>();
-
-        //debug only
-        PlayerPrefs.SetInt("maxGunIndex",3);
-        PlayerPrefs.SetInt("maxHealth", 100);
     }
 
     // Update is called once per frame
@@ -287,14 +284,17 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("BowArrow"))
             {
                 allGuns[0].currentAmmo += BowSupply;
+                audiosource.PlayOneShot(pickupArrowSFX, 0.25f);
             }
             else if (other.gameObject.CompareTag("CrossbowArrow"))
             {
                 allGuns[1].currentAmmo += CrossbowSupply;
+                audiosource.PlayOneShot(pickupCrossbowArrowSFX, 0.25f);
             }
             else if (other.gameObject.CompareTag("Mana"))
             {
                 allGuns[2].currentAmmo += ManaSupply;
+                audiosource.PlayOneShot(pickupManaSFX, 0.25f);
             }
 
             //update ui
@@ -320,7 +320,6 @@ public class PlayerController : MonoBehaviour
             knockbackDir= (transform.position - other.transform.position).normalized;
             knockbackDir.y = 0.5f;
             knockbackTimer = knockbackForce * 0.02f;
-
         }
     }
 
