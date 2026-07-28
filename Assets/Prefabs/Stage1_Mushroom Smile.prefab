@@ -107,7 +107,7 @@ MonoBehaviour:
   fireRate: 1
   waitBetweenShots: 1
   timeToShoot: 1
-  anim: {fileID: 0}
+  anim: {fileID: 6365615999893712410}
   ShootSfx: {fileID: 0}
   KnockbackForce: 8
   isMelee: 1
@@ -426,5 +426,10 @@ Transform:
 --- !u!4 &3859081074166745320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 765184133813283021, guid: cbc814ca6b730954b8a5e3641bde01c9, type: 3}
+  m_PrefabInstance: {fileID: 4544219023051644965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6365615999893712410 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7442050115661319743, guid: cbc814ca6b730954b8a5e3641bde01c9, type: 3}
   m_PrefabInstance: {fileID: 4544219023051644965}
   m_PrefabAsset: {fileID: 0}

@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 public class CheckpointController : MonoBehaviour
 {
     public string cpName;
-    public AudioClip checkpointAC;
-    public GameObject checkpointEffect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,13 +25,10 @@ public class CheckpointController : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag=="Player")
         {
-            PlayerController.instance.audiosource.PlayOneShot(checkpointAC, 0.5f);
-            Instantiate(checkpointEffect, transform.position, transform.rotation);
             PlayerPrefs.SetString(SceneManager.GetActiveScene().name + "_cp",cpName);
             
         }
