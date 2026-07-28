@@ -9,7 +9,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     public int healAmount = 10, healPotion = 0;
 
     //sfx
-    public AudioClip gethitsfx, deathsfx;
+    public AudioClip healsfx, gethitsfx, deathsfx;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -45,28 +45,11 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             invincibleCounter -= Time.deltaTime;
         }
     }
-    public void DamagePlayer(float damageAmount)
-    {
-        int damage = (int)(damageAmount);
-        currentHealth -= damage;
-        //get hit sfx
-        PlayerController.instance.audiosource.PlayOneShot(gethitsfx, 0.5f);
-        if(currentHealth<=0)
-        {
-            //death sfx
-            PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
-            PlayerController.instance.SaveGunData();
-            transform.parent.gameObject.SetActive(false);
-            currentHealth = 0;
-            GameManager.instance.PlayerDied();
-        }
-        UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
-    }
 
     public void healPlayer()
     {
         currentHealth += healAmount;
+        PlayerController.instance.audiosource.PlayOneShot(healsfx, 0.5f);
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -87,6 +70,8 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
 
             if (currentHealth <= 0)
             {
+                PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
+                PlayerController.instance.SaveGunData();
                 transform.parent.gameObject.SetActive(false);
                 currentHealth = 0;
                 updateHealth();
@@ -98,6 +83,26 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             UIController.instance.healthSlider.value = currentHealth;
             UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
         }
+    }
+
+    public void DamagePlayer(float damageAmount)
+    {
+        int damage = (int)(damageAmount);
+        currentHealth -= damage;
+        //get hit sfx
+        PlayerController.instance.audiosource.PlayOneShot(gethitsfx, 0.5f);
+        if (currentHealth <= 0)
+        {
+            //death sfx
+            PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
+            PlayerController.instance.SaveGunData();
+            transform.parent.gameObject.SetActive(false);
+            currentHealth = 0;
+            updateHealth();
+            GameManager.instance.PlayerDied();
+        }
+        UIController.instance.healthSlider.value = currentHealth;
+        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
     }
 
     public void IncreaseMaxHealth()
