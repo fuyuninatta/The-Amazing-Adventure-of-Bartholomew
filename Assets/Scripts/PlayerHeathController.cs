@@ -13,13 +13,6 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     public Image damageOverlay;
     public float flashSpeed = 2f; //yang handle how fast it fade away
 
-    //Health Bar & Easing
-    public Slider easeHealthSlider;
-    public float lerpSpeed = 5f;
-    public RectTransform healthBarContainer;
-    public float widthPerHP = 2.5f;
-
-
     //sfx
     public AudioClip gethitsfx, deathsfx;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,38 +29,33 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             healPotion = PlayerPrefs.GetInt("healingPotionAmount");
         }
 
-        if(PlayerPrefs.HasKey("maxHealth"))
+        if (PlayerPrefs.HasKey("maxHealth"))
         {
             maxHealth = PlayerPrefs.GetInt("maxHealth");
         }
-        UpdateHealthUI();
 
-        if (easeHealthSlider != null)
+        if (HealthBarUI.instance != null)
         {
-            easeHealthSlider.maxValue = maxHealth;
-            easeHealthSlider.value = currentHealth;
+            HealthBarUI.instance.UpdateHealth(currentHealth, maxHealth);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (invincibleCounter > 0)
+            {
+                invincibleCounter -= Time.deltaTime;
+            }
+
+            if (damageOverlay != null && damageOverlay.color.a > 0)
+            {
+                Color overlayColor = damageOverlay.color;
+                overlayColor.a -= flashSpeed * Time.deltaTime;
+                damageOverlay.color = overlayColor;
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(invincibleCounter>0)
-        {
-            invincibleCounter -= Time.deltaTime;
-        }
-        if(damageOverlay != null && damageOverlay.color.a > 0)
-        {
-            Color overlayColor = damageOverlay.color;
-            overlayColor.a -= flashSpeed * Time.deltaTime;
-            damageOverlay.color = overlayColor;
-        }
-
-        if (easeHealthSlider != null && easeHealthSlider.value != currentHealth)
-        {
-            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, currentHealth, lerpSpeed * Time.deltaTime);
-        }
-    }
     public void DamagePlayer(float damageAmount)
     {
         int damage = (int)(damageAmount);
@@ -86,7 +74,8 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             currentHealth = 0;
             GameManager.instance.PlayerDied();
         }
-        UpdateHealthUI();
+
+        HealthBarUI.instance.UpdateHealth(currentHealth, maxHealth);
 
         UIController.instance.healthSlider.value = currentHealth;
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
@@ -99,7 +88,8 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         {
             currentHealth = maxHealth;
         }
-        UpdateHealthUI();
+
+        HealthBarUI.instance.UpdateHealth(currentHealth, maxHealth);
 
         UIController.instance.healthSlider.value = currentHealth;
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
@@ -125,7 +115,8 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             }
 
             invincibleCounter = invincibleLength;
-            UpdateHealthUI();
+
+            HealthBarUI.instance.UpdateHealth(currentHealth, maxHealth);
 
             UIController.instance.healthSlider.value = currentHealth;
             UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
@@ -136,30 +127,13 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     {
         maxHealth += AddMaxHealthAmount;
         currentHealth = maxHealth;
+        HealthBarUI.instance.UpdateHealth(currentHealth, maxHealth);
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
     }
     public void updateHealth()
     {
         PlayerPrefs.SetInt("healingPotionsAmount", healPotion);
         PlayerPrefs.SetInt("maxHealth", maxHealth);    
-    }
-
-    private void UpdateHealthUI()
-    {
-        UIController.instance.healthSlider.maxValue = maxHealth;
-        UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
-        UIController.instance.healingPotionsText.text = "Healing Potions: " + healPotion;
-
-        if(easeHealthSlider != null)
-        {
-            easeHealthSlider.maxValue = maxHealth;
-        }
-
-        if(healthBarContainer != null)
-        {
-            healthBarContainer.sizeDelta = new Vector2(maxHealth * widthPerHP, healthBarContainer.sizeDelta.y);
-        }
     }
 
     private void FlashRedScreen()
