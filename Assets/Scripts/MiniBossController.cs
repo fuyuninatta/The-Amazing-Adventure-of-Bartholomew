@@ -11,6 +11,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public NavMeshAgent agent;
     public Animator anim;
     public GameObject WeaponGate;
+    public GameObject HealthBarGO;
 
     private bool action = false;//true:summon, false:free roam
     public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
@@ -21,7 +22,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     private Collider hitbox;
 
     private bool isDead = false;
-    private Transform spawnitemPos;
+    public Transform spawnitemPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +31,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
-        spawnitemPos = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
@@ -123,6 +123,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
         hitbox.enabled = false;
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
+        HealthBarGO.SetActive(false);
         
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
