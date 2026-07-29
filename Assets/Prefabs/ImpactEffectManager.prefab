@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5190848599467094129
+--- !u!1 &2159878658272027877
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3201073969119544844}
-  - component: {fileID: 1862782818262849064}
+  - component: {fileID: 2576691350599655560}
+  - component: {fileID: 9083201133158213414}
   m_Layer: 0
-  m_Name: ImpactEffectManager_Level1
+  m_Name: ImpactEffectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3201073969119544844
+--- !u!4 &2576691350599655560
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5190848599467094129}
+  m_GameObject: {fileID: 2159878658272027877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.01014, y: 0, z: -2.11437}
+  m_LocalPosition: {x: -16.70358, y: -0.28, z: -13.42152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1862782818262849064
+--- !u!114 &9083201133158213414
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5190848599467094129}
+  m_GameObject: {fileID: 2159878658272027877}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ae889f6249e2054cb02323d05028327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EffectObjectPoolManager
-  effectPrefabs: []
+  effectPrefabs:
+  - {fileID: 6982263153641847612, guid: 36a3ddd9e9258474aa29a08939eeda45, type: 3}
+  - {fileID: 447409866740539227, guid: da34d66431c8cd04aa98411a543a83bf, type: 3}
   effectPoolSize: 100
