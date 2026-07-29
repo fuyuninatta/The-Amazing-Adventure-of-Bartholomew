@@ -14,11 +14,8 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     public float flashSpeed = 2f; //yang handle how fast it fade away
 
     //Health Bar & Easing
-    public Slider easeHealthSlider;
     public float lerpSpeed = 5f;
-    public RectTransform healthBarContainer;
     public float widthPerHP = 2.5f;
-
 
     //sfx
     public AudioClip healsfx, gethitsfx, deathsfx;
@@ -41,12 +38,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             maxHealth = PlayerPrefs.GetInt("maxHealth");
         }
         UpdateHealthUI();
-
-        if (easeHealthSlider != null)
-        {
-            easeHealthSlider.maxValue = maxHealth;
-            easeHealthSlider.value = currentHealth;
-        }
+        UIController.instance.easehealthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -63,9 +55,10 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             damageOverlay.color = overlayColor;
         }
 
-        if (easeHealthSlider != null && easeHealthSlider.value != currentHealth)
+        //make ease health bar slightly slower
+        if (UIController.instance.healthSlider.value != UIController.instance.easehealthSlider.value)
         {
-            easeHealthSlider.value = Mathf.Lerp(easeHealthSlider.value, currentHealth, lerpSpeed * Time.deltaTime);
+            UIController.instance.easehealthSlider.value = Mathf.Lerp(UIController.instance.easehealthSlider.value, currentHealth, lerpSpeed * Time.deltaTime);
         }
     }
 
@@ -136,32 +129,14 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         }
     }
 
-    public void DamagePlayer(float damageAmount)
-    {
-        int damage = (int)(damageAmount);
-        currentHealth -= damage;
-        //get hit sfx
-        PlayerController.instance.audiosource.PlayOneShot(gethitsfx, 0.5f);
-        if (currentHealth <= 0)
-        {
-            //death sfx
-            PlayerController.instance.audiosource.PlayOneShot(deathsfx, 1.0f);
-            PlayerController.instance.SaveGunData();
-            transform.parent.gameObject.SetActive(false);
-            currentHealth = 0;
-            updateHealth();
-            GameManager.instance.PlayerDied();
-        }
-        UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
-    }
-
     public void IncreaseMaxHealth()
     {
         maxHealth += AddMaxHealthAmount;
         currentHealth = maxHealth;
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+        UpdateHealthUI();
     }
+
     public void updateHealth()
     {
         PlayerPrefs.SetInt("healingPotionsAmount", healPotion);
@@ -170,20 +145,20 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
 
     private void UpdateHealthUI()
     {
-        UIController.instance.healthSlider.maxValue = maxHealth;
         UIController.instance.healthSlider.value = currentHealth;
+
+        UIController.instance.healthSlider.maxValue = maxHealth;
+        UIController.instance.easehealthSlider.maxValue = maxHealth;
+        UIController.instance.containerhealthSlider.maxValue = maxHealth;
+
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
         UIController.instance.healingPotionsText.text = "Healing Potions: " + healPotion;
 
-        if(easeHealthSlider != null)
-        {
-            easeHealthSlider.maxValue = maxHealth;
-        }
 
-        if(healthBarContainer != null)
-        {
-            healthBarContainer.sizeDelta = new Vector2(maxHealth * widthPerHP, healthBarContainer.sizeDelta.y);
-        }
+        //increase UI length base on new maxhealth
+        UIController.instance.healthSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHealth * widthPerHP);
+        UIController.instance.easehealthSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHealth * widthPerHP);
+        UIController.instance.containerhealthSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHealth * widthPerHP + 160f);
     }
 
     private void FlashRedScreen()

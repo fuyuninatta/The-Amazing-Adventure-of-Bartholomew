@@ -73527,21 +73527,37 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b1d4774edd48e6a4ba8e96c63d452394, type: 3}
+    - target: {fileID: 3601345987371583848, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601345987371583848, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6523972847506883780, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 128751883}
     - target: {fileID: 6564921968224979997, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6564921968224979997, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6564921968224979997, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -6.0289917
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788159659344466014, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788159659344466014, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7104130745260128396, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
       propertyPath: m_IsActive
@@ -73770,7 +73786,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 627280791}
+  m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 179391481}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -73786,17 +73802,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7425003424434281186, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
   m_PrefabInstance: {fileID: 627280787}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &627280791 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3308050170411675791, guid: ee85093fc43f9c543b810e1f5ad5960f, type: 3}
-  m_PrefabInstance: {fileID: 627280787}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627280788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &628920222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -222654,7 +222659,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 627280787}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936021570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
