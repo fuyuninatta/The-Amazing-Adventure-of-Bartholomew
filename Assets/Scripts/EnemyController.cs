@@ -44,6 +44,8 @@ public class EnemyController : MonoBehaviour
 
     private bool isDead = false;
 
+    public GameObject HealthBarGO;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -255,6 +257,8 @@ public class EnemyController : MonoBehaviour
         isDead = true;
         Collider hitbox = GetComponentInChildren<Collider>();
         hitbox.enabled = false;
+        HealthBarGO.SetActive(false);
+
     }
 
     public void GetHitAnim()
