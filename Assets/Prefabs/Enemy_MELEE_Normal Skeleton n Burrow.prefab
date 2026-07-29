@@ -50,7 +50,7 @@ MonoBehaviour:
   moveSpeed: 0
   lifeTime: 1
   rb: {fileID: 7749872265384852243}
-  impactEffect: {fileID: 7014957094343536532, guid: 6b56fea45a0026441aa350cf830ead4d, type: 3}
+  impactEffect: {fileID: 6982263153641847612, guid: 36a3ddd9e9258474aa29a08939eeda45, type: 3}
   attackPlayer: 1
   damage: 15
   pierceCount: 0
@@ -121,7 +121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4047996889132556684
 Transform:
   m_ObjectHideFlags: 0

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4042420989025692847}
   - component: {fileID: 8578137340943137717}
   - component: {fileID: 4512456216578166041}
+  - component: {fileID: 6530059869752401119}
   m_Layer: 0
   m_Name: BossDragon
   m_TagString: Untagged
@@ -118,6 +119,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6530059869752401119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484716859071693240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6189c0f469ce3fd4482dee591e338fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossHealthBar
+  healthSlider: {fileID: 7043742537203821896}
+  easeHealthSlider: {fileID: 2810021794804019958}
 --- !u!1 &6515078078304207268
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,11 +354,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
+--- !u!114 &2810021794804019958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3618162993398770886, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
+  m_PrefabInstance: {fileID: 1497869078677249584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &3384334641860780517 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4197053108501643221, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
   m_PrefabInstance: {fileID: 1497869078677249584}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7043742537203821896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8433299785142694776, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
+  m_PrefabInstance: {fileID: 1497869078677249584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!224 &7883411260690281304 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8768226156380646760, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
