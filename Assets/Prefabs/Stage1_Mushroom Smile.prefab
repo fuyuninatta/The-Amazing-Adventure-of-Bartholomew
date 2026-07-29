@@ -410,6 +410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MushroomAngryPA
       objectReference: {fileID: 0}
+    - target: {fileID: 7442050115661319743, guid: cbc814ca6b730954b8a5e3641bde01c9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e99f73e0e5ed29845b7c0ddd0bc618b0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
