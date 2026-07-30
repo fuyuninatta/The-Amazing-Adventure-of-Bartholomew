@@ -45,7 +45,7 @@ public class FadeEffect : MonoBehaviour
         fadeCanvasGroup.alpha = 1f;
 
         // Load your new scene
-        SceneManager.LoadScene(sceneName);
+        GameManager.instance.LoadNextScene();
     }
 
     private IEnumerator FadeIn()
@@ -61,7 +61,7 @@ public class FadeEffect : MonoBehaviour
         }
 
         fadeCanvasGroup.alpha = 0f;
-        fadeCanvasGroup.blocksRaycasts = false; // Allow button clicks again
+        fadeCanvasGroup.blocksRaycasts = false;// Allow button clicks again
     }
 }
 

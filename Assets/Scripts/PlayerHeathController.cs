@@ -81,9 +81,6 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             GameManager.instance.PlayerDied();
         }
         UpdateHealthUI();
-
-        UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
     }
 
     public void healPlayer()
@@ -95,9 +92,6 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             currentHealth = maxHealth;
         }
         UpdateHealthUI();
-
-        UIController.instance.healthSlider.value = currentHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
     }
 
     public void TakeDamage(int damage, bool attackPlayer)
@@ -123,17 +117,18 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
 
             invincibleCounter = invincibleLength;
             UpdateHealthUI();
-
-            UIController.instance.healthSlider.value = currentHealth;
-            UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
         }
     }
 
     public void IncreaseMaxHealth()
     {
         maxHealth += AddMaxHealthAmount;
-        currentHealth = maxHealth;
-        UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+        currentHealth += AddMaxHealthAmount;
+
+        if (currentHealth > maxHealth)//prevent error
+        {
+            currentHealth = maxHealth;
+        }
         UpdateHealthUI();
     }
 
@@ -145,20 +140,22 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
 
     private void UpdateHealthUI()
     {
-        UIController.instance.healthSlider.value = currentHealth;
-
         UIController.instance.healthSlider.maxValue = maxHealth;
         UIController.instance.easehealthSlider.maxValue = maxHealth;
         UIController.instance.containerhealthSlider.maxValue = maxHealth;
 
+        UIController.instance.healthSlider.value = currentHealth;
+        UIController.instance.containerhealthSlider.value = maxHealth;
+
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
         UIController.instance.healingPotionsText.text = "Healing Potions: " + healPotion;
 
+        float scaleFactor = (float)maxHealth / 100f;
+        if (scaleFactor < 1f) scaleFactor = 1f;
 
-        //increase UI length base on new maxhealth
-        UIController.instance.healthSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHealth * widthPerHP);
-        UIController.instance.easehealthSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHealth * widthPerHP);
-        UIController.instance.containerhealthSlider.fillRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxHealth * widthPerHP + 160f);
+        Vector3 scale = UIController.instance.SliderScale.localScale;
+        scale.x = scaleFactor;
+        UIController.instance.SliderScale.localScale = scale;
     }
 
     private void FlashRedScreen()
