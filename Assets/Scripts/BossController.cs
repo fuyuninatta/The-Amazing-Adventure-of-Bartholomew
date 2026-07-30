@@ -53,6 +53,7 @@ public class BossController : MonoBehaviour, IDamagable
         PrepareFirePool();
         originalPos = transform.position;
         originalRot = transform.rotation;
+        PlayerController.instance.audiosource.PlayOneShot(ScreamSfx, 0.6f);
     }
 
     // Update is called once per frame
@@ -235,7 +236,6 @@ public class BossController : MonoBehaviour, IDamagable
         if (!attackPlayer)
         {
             currentHealth -= damage;
-            PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
 
             if (currentHealth <= 0)
             {
@@ -247,6 +247,7 @@ public class BossController : MonoBehaviour, IDamagable
                 float hitChance = Random.value; //0.0 - 1.0
                 if (hitChance < 0.3f && !phase2)//only phase 1 have get hit animation
                 {
+                    PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
                     animator.SetTrigger("GetHit");
                 }
             }

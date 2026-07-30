@@ -49,7 +49,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &918957675890546877
 Transform:
   m_ObjectHideFlags: 0
@@ -82,9 +82,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiniBossController
   currentHealth: 480
   MaxHealth: 480
-  SummonSfx: {fileID: 0}
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
+  SummonSfx: {fileID: 8300000, guid: 547646b1277825548aacf9455ac31a87, type: 3}
+  GetHitSfx: {fileID: 8300000, guid: 3b9999387ba5d024493710b6446a846c, type: 3}
+  DeathSfx: {fileID: 8300000, guid: e77d10cfc68a343418763aacb96c848d, type: 3}
   agent: {fileID: 7388471650735534754}
   anim: {fileID: 603222084184063581}
   WeaponGate: {fileID: 7212345242401409229, guid: 93f7bca0f58f1a945a76bbf334803b44, type: 3}
@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140212293267182000, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7163385975590804865, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_Sprite
@@ -397,11 +397,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f2be8e01914384dd494098a7740023e7, type: 3}
     - target: {fileID: 8048456965035427790, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8048456965035427790, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: 5cebfd693d691a74a9785e28294c0b88, type: 3}
       propertyPath: m_AnchorMax.y

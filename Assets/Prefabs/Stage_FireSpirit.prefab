@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthController
   currentHealth: 80
   maxHealth: 80
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
+  GetHitSfx: {fileID: 8300000, guid: 0e49aaf485b220740ae76714f6292586, type: 3}
+  DeathSfx: {fileID: 8300000, guid: b29ca8e1a118b21469766f387f6495be, type: 3}
 --- !u!114 &22281026322173501
 MonoBehaviour:
   m_ObjectHideFlags: 0

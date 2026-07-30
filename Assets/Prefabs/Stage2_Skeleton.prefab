@@ -81,8 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthController
   currentHealth: 70
   maxHealth: 70
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
+  GetHitSfx: {fileID: 8300000, guid: c64541a444951844e93d1c3079e2c866, type: 3}
+  DeathSfx: {fileID: 8300000, guid: 3aed43163fc7d434a8bd1c2b071dc454, type: 3}
 --- !u!114 &22281026322173501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,18 +97,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   distanceToChase: 10
   distanceToLose: 15
-  distanceToStop: 1.5
+  distanceToStop: 2
   distanceToDestroy: 25
   agent: {fileID: 7388471650735534754}
   keepChasingTime: 5
-  bulletPrefab: {fileID: 3390670577263124499, guid: 09691064ee987d346bbeca6c10f56980, type: 3}
+  bulletPrefab: {fileID: 3390670577263124499, guid: e450f5a9ad4f0794ca375ccfdfa51a02, type: 3}
   bulletPoolSize: 5
   firePoint: {fileID: 2081046324836347822}
   fireRate: 1
   waitBetweenShots: 1
   timeToShoot: 1
   anim: {fileID: 3238140882533769739}
-  ShootSfx: {fileID: 0}
+  ShootSfx: {fileID: 8300000, guid: 8695e3b8396fa7d49a5f7d7306e22f99, type: 3}
   KnockbackForce: 8
   isMelee: 1
   HealthBarGO: {fileID: 6888810686998612208}

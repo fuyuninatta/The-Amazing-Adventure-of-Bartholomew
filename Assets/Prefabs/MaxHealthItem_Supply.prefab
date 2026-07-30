@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPickUp
   HealingP: 0
+  pickuphealingPotionSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
+  maxHealthSFX: {fileID: 8300000, guid: 2524c4cb34dd6ac47bdfc82ea0c791b4, type: 3}
 --- !u!135 &8685215930617484026
 SphereCollider:
   m_ObjectHideFlags: 0
