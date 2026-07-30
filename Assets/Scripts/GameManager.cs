@@ -17,10 +17,12 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "LastScene" && SceneManager.GetActiveScene().name != "StartScene")
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         //remove last level data

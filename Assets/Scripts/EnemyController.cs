@@ -215,11 +215,11 @@ public class EnemyController : MonoBehaviour
         if (bulletPool.Count > 0)
         {
             bullet = bulletPool.Dequeue();
+            PlayerController.instance.audiosource.PlayOneShot(ShootSfx, 0.4f);
         }
         else
         {
             bullet = Instantiate(bulletPrefab, bulletPoolParent);
-            PlayerController.instance.audiosource.PlayOneShot(ShootSfx, 0.6f);
             bullet.SetReturnAction(ReturnBullet);
         }
 

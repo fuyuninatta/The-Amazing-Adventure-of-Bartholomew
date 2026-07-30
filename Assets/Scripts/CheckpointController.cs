@@ -7,6 +7,8 @@ public class CheckpointController : MonoBehaviour
     public AudioClip checkpointAC;
     public GameObject checkpointEffect;
 
+    public static GameObject activeEffectInstance;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +20,7 @@ public class CheckpointController : MonoBehaviour
                 PlayerController.instance.transform.position = transform.position + new Vector3(0.0f,5.0f,0.0f);
                 PlayerController.instance.transform.rotation = transform.rotation;
                 PlayerController.instance.GetComponent<CharacterController>().enabled = true;
+                CheckPointVFX();
             }
         }
     }
@@ -32,10 +35,26 @@ public class CheckpointController : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            if (PlayerPrefs.GetString(SceneManager.GetActiveScene().name + "_cp") == cpName)//if empty checkpoint just skip the code
+            {
+                return;
+            }
             PlayerController.instance.audiosource.PlayOneShot(checkpointAC, 0.5f);
-            Instantiate(checkpointEffect, transform.position, transform.rotation);
-            PlayerPrefs.SetString(SceneManager.GetActiveScene().name + "_cp",cpName);
-            
+            CheckPointVFX();
+            PlayerPrefs.SetString(SceneManager.GetActiveScene().name + "_cp", cpName);
+        }
+    }
+
+    private void CheckPointVFX()
+    {
+        if (activeEffectInstance != null)//if scene alr have effect, move to new position
+        {
+            activeEffectInstance.transform.position = transform.position;
+            activeEffectInstance.transform.rotation = transform.rotation;
+        }
+        else//if scene dont have effect just create new
+        {
+            activeEffectInstance = Instantiate(checkpointEffect, transform.position, transform.rotation);
         }
     }
 }
