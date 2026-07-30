@@ -134,11 +134,11 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
 
     public void updateHealth()
     {
-        PlayerPrefs.SetInt("healingPotionsAmount", healPotion);
+        PlayerPrefs.SetInt("healingPotionAmount", healPotion);
         PlayerPrefs.SetInt("maxHealth", maxHealth);    
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         UIController.instance.healthSlider.maxValue = maxHealth;
         UIController.instance.easehealthSlider.maxValue = maxHealth;
@@ -148,7 +148,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         UIController.instance.containerhealthSlider.value = maxHealth;
 
         UIController.instance.healthText.text = "Health: " + currentHealth + "/" + maxHealth;
-        UIController.instance.healingPotionsText.text = "Healing Potions: " + healPotion;
+        UIController.instance.healingPotionsText.text = "X" + healPotion;
 
         float scaleFactor = (float)maxHealth / 100f;
         if (scaleFactor < 1f) scaleFactor = 1f;
