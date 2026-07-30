@@ -22,7 +22,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     private Collider hitbox;
 
     private bool isDead = false;
-    private Transform spawnitemPos;
+    public Transform spawnitemPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +31,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
-        spawnitemPos = GetComponentInChildren<Transform>();
     }
 
     // Update is called once per frame
@@ -128,6 +127,5 @@ public class MiniBossController : MonoBehaviour, IDamagable
         
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
-        
     }
 }

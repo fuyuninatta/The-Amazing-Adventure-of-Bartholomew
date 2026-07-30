@@ -23,7 +23,7 @@ public class BulletController : MonoBehaviour
     //pierce bullet
     public int pierceCount = 0;//0 can not pierce, >0 can pierce
     private int remainingPierces;
-    private List<Collider> hitList = new List<Collider>();//record how many enemy get hit
+    private List<IDamagable> hitList = new List<IDamagable>();//record how many enemy get hit
 
     public float KnockBackPower;
 
@@ -65,15 +65,14 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hitList.Contains(other)) return;//prevent repeat hit
-
         if (shooter != null && other.transform.root == shooter.root) return;//prevent shooting itself
 
         IDamagable damageable = other.GetComponentInParent<IDamagable>();
 
         if (damageable != null)
         {
-            hitList.Add(other);
+            if (hitList.Contains(damageable)) return;//prevent repeat hit
+            hitList.Add(damageable);
             damageable.TakeDamage(damage, attackPlayer);
 
             //Knock Back
