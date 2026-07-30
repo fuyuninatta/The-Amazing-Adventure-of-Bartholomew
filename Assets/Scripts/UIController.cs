@@ -8,10 +8,13 @@ public class UIController : MonoBehaviour
 
     public Slider healthSlider, easehealthSlider, containerhealthSlider;
     public RectTransform SliderScale;
-    public Text healthText, healingPotionsText, ammo1Text, ammo2Text, ammo3Text;
+    public Text healthText, healingPotionsText;
 
     public Text timerText;
     public float timeElapsed = 0f;
+
+    public GameObject[] weaponBoxes;
+    public Text[] ammoText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()

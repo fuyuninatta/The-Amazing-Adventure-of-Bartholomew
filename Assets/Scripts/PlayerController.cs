@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -251,12 +252,12 @@ public class PlayerController : MonoBehaviour
     public void SwitchGun(int currentGunIndex)
     {
         activeGun.gameObject.SetActive(false);
-
         //switch gun when the gun is unlocked
         //maxGunIndex will +1 when player enter new level(each level unlock 1 new weapon)
         if (currentGunIndex < maxGunIndex)
         {
             currentGun = currentGunIndex;
+            AmmoUpdate();
         }
 
         activeGun = allGuns[currentGun];
@@ -358,22 +359,37 @@ public class PlayerController : MonoBehaviour
 
     public void AmmoUpdate()
     {
-        UIController.instance.ammo1Text.text = "Bow Arrows: " + allGuns[0].currentAmmo;
-        //adjust the ammo ui base on unlocked weapon
-        if (maxGunIndex == 1)
+        for (int i = 0; i < UIController.instance.weaponBoxes.Length; i++)
         {
-            UIController.instance.ammo2Text.text = " ";
-            UIController.instance.ammo3Text.text = " ";
-        }
-        else if (maxGunIndex == 2)
-        {
-            UIController.instance.ammo2Text.text = "Crossbow Arrows:  " + allGuns[1].currentAmmo;
-            UIController.instance.ammo3Text.text = " ";
-        }
-        else if (maxGunIndex == 3)
-        {
-            UIController.instance.ammo2Text.text = "Crossbow Arrows:  " + allGuns[1].currentAmmo;
-            UIController.instance.ammo3Text.text = "Mana: " + allGuns[2].currentAmmo;
+            //decide which gun is active, only smaller than maxGunIndex is unlocked
+            if(i < maxGunIndex)
+            {
+                UIController.instance.weaponBoxes[i].SetActive(true);
+            }
+            else
+            {
+                UIController.instance.weaponBoxes[i].SetActive(false);
+            }
+
+            //printout ammo if the weapon box is active
+            if (UIController.instance.weaponBoxes[i] != null)
+            {
+                UIController.instance.ammoText[i].text = "" + allGuns[i].currentAmmo;
+            }
+
+            //change color and scale for active gun
+            //current gun will be larger and brighter
+            Image WeaponImage = UIController.instance.weaponBoxes[i].GetComponent<Image>();
+            if(i == currentGun)
+            {
+                UIController.instance.weaponBoxes[i].transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                WeaponImage.color = Color.white;
+            }
+            else
+            {
+                UIController.instance.weaponBoxes[i].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                WeaponImage.color = new Color(0.6f, 0.6f, 0.6f, 1f);
+            }
         }
     }
 }
