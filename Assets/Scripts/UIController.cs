@@ -23,16 +23,6 @@ public class UIController : MonoBehaviour
     }
     void Start()
     {
-        if (SceneManager.GetActiveScene().name == "LastScene" && SceneManager.GetActiveScene().name == "StartScene")
-        {
-            return;
-        }
-        else
-        {
-            timeElapsed += Time.deltaTime;
-            UpdateTimerDisplay();
-        }
-
         if (PlayerPrefs.HasKey("Timer"))
         {
             timeElapsed = PlayerPrefs.GetFloat("Timer");
