@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Dash
-        if (Input.GetMouseButtonDown(1) && dashTimer <= 0)
+        if (Input.GetMouseButtonDown(1) && dashTimer <= 0 &&charCon.isGrounded)
         {
             dashTimer = dashDuration;
         }

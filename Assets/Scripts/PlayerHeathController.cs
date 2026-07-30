@@ -26,7 +26,6 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     }
     void Start()
     {
-        currentHealth = maxHealth;
 
         if (PlayerPrefs.HasKey("healingPotionAmount"))
         {
@@ -37,6 +36,12 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         {
             maxHealth = PlayerPrefs.GetInt("maxHealth");
         }
+
+        if (PlayerPrefs.HasKey("currentHealth"))
+        {
+            currentHealth = PlayerPrefs.GetInt("currentHealth");
+        }
+
         UpdateHealthUI();
         UIController.instance.easehealthSlider.value = currentHealth;
     }
@@ -135,7 +140,8 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     public void updateHealth()
     {
         PlayerPrefs.SetInt("healingPotionAmount", healPotion);
-        PlayerPrefs.SetInt("maxHealth", maxHealth);    
+        PlayerPrefs.SetInt("maxHealth", maxHealth);
+        PlayerPrefs.SetInt("currentHealth", currentHealth);
     }
 
     public void UpdateHealthUI()
