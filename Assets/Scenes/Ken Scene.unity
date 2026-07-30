@@ -6803,15 +6803,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1800375412663340060, guid: ffa177584149ea543a05923fac086640, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2032783186345831952, guid: ffa177584149ea543a05923fac086640, type: 3}
       propertyPath: m_Name
       value: MiniBoss_Stage2
       objectReference: {fileID: 0}
+    - target: {fileID: 2032783186345831952, guid: ffa177584149ea543a05923fac086640, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7421546590048134995, guid: ffa177584149ea543a05923fac086640, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
