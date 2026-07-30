@@ -53,7 +53,6 @@ public class BossController : MonoBehaviour, IDamagable
         PrepareFirePool();
         originalPos = transform.position;
         originalRot = transform.rotation;
-        PlayerController.instance.audiosource.PlayOneShot(ScreamSfx, 0.6f);
     }
 
     // Update is called once per frame
