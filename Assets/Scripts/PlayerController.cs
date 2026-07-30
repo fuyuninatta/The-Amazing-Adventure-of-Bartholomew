@@ -204,6 +204,7 @@ public class PlayerController : MonoBehaviour
         {
             dashTimer = dashDuration;
         }
+
         if(dashTimer >0)
         {
             charCon.Move(transform.forward * dashSpeed * Time.deltaTime);
@@ -369,7 +370,7 @@ public class PlayerController : MonoBehaviour
             UIController.instance.ammo2Text.text = "Crossbow Arrows:  " + allGuns[1].currentAmmo;
             UIController.instance.ammo3Text.text = " ";
         }
-        else if(maxGunIndex == 3)
+        else if (maxGunIndex == 3)
         {
             UIController.instance.ammo2Text.text = "Crossbow Arrows:  " + allGuns[1].currentAmmo;
             UIController.instance.ammo3Text.text = "Mana: " + allGuns[2].currentAmmo;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayerHeathController : MonoBehaviour,IDamagable
 {
     public static PlayerHeathController instance;
-    public int maxHealth = 100, currentHealth, AddMaxHealthAmount = 15;
+    public int maxHealth = 100, currentHealth = 100, AddMaxHealthAmount = 15;
     public float invincibleLength = 1f;
     public float invincibleCounter;
     public int healAmount = 10, healPotion = 0;
@@ -41,8 +41,12 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
         {
             currentHealth = PlayerPrefs.GetInt("currentHealth");
         }
+        else
+        {
+            currentHealth = maxHealth;
+        }
 
-        UpdateHealthUI();
+            UpdateHealthUI();
         UIController.instance.easehealthSlider.value = currentHealth;
     }
 
@@ -141,7 +145,6 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
     {
         PlayerPrefs.SetInt("healingPotionAmount", healPotion);
         PlayerPrefs.SetInt("maxHealth", maxHealth);
-        PlayerPrefs.SetInt("currentHealth", currentHealth);
     }
 
     public void UpdateHealthUI()
