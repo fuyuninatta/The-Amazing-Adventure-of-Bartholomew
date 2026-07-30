@@ -47,4 +47,6 @@ MonoBehaviour:
   effectPrefabs:
   - {fileID: 6982263153641847612, guid: 36a3ddd9e9258474aa29a08939eeda45, type: 3}
   - {fileID: 447409866740539227, guid: da34d66431c8cd04aa98411a543a83bf, type: 3}
+  - {fileID: 7904898002847524615, guid: a2ccf81a1d5b163448ebdf66b5e746d6, type: 3}
+  - {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
   effectPoolSize: 100

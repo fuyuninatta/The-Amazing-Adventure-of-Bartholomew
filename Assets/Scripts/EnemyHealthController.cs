@@ -30,7 +30,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
         {
             //reduce health
             currentHealth -= damage;
-            PlayerController.instance.audiosource.PlayOneShot(GetHitSfx,0.2f);
+            PlayerController.instance.audiosource.PlayOneShot(GetHitSfx,0.4f);
 
             //UI
             healthBar.healthSlider.value = currentHealth;
@@ -38,7 +38,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
             //dead
             if (currentHealth <= 0)
             {
-                PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
+                PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.6f);
                 transform.GetComponent<EnemyController>().Dead();
             }
             else

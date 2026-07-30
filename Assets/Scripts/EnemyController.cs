@@ -219,7 +219,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             bullet = Instantiate(bulletPrefab, bulletPoolParent);
-            PlayerController.instance.audiosource.PlayOneShot(ShootSfx, 0.1f);
+            PlayerController.instance.audiosource.PlayOneShot(ShootSfx, 0.6f);
             bullet.SetReturnAction(ReturnBullet);
         }
 

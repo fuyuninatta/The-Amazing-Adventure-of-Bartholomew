@@ -81,8 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthController
   currentHealth: 40
   maxHealth: 40
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
+  GetHitSfx: {fileID: 8300000, guid: c46d5d669bcd23e4b93fa390eec583ff, type: 3}
+  DeathSfx: {fileID: 8300000, guid: e269a7da4291c4c41bd808c1457d7235, type: 3}
 --- !u!114 &22281026322173501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   waitBetweenShots: 1
   timeToShoot: 1
   anim: {fileID: 6365615999893712410}
-  ShootSfx: {fileID: 0}
+  ShootSfx: {fileID: 8300000, guid: c46d5d669bcd23e4b93fa390eec583ff, type: 3}
   KnockbackForce: 8
   isMelee: 1
   HealthBarGO: {fileID: 8403197746047859062}

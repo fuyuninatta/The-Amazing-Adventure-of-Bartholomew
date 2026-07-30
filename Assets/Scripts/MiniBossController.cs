@@ -72,6 +72,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
                 {
                     Debug.Log("summon");
                     anim.SetTrigger("Summon");
+                    PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
                     SummonEnemy.instance.spawnEnemy();
                 }
              actionTimer = actionDuration;
@@ -83,11 +84,11 @@ public class MiniBossController : MonoBehaviour, IDamagable
         if (!attackPlayer)
         {
             currentHealth -= damage;
-            PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
+            PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.6f);
 
             if (currentHealth <= 0)
             {
-                PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.2f);
+                PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.4f);
                 Died();
                 isDead = true;
             }

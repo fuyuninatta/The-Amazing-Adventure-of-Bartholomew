@@ -87,11 +87,11 @@ MonoBehaviour:
   fireDistance: 12
   firePoint: {fileID: 3271142603758538862}
   fireRate: 1.5
-  ScreamSfx: {fileID: 0}
-  BiteSfx: {fileID: 0}
-  ShootFireSfx: {fileID: 0}
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
+  ScreamSfx: {fileID: 8300000, guid: 5419b931b421d2d4f93fd0fcef3e45cb, type: 3}
+  BiteSfx: {fileID: 8300000, guid: e5a7a3b33e068bd43afbf45b9832dd9c, type: 3}
+  ShootFireSfx: {fileID: 8300000, guid: 6d138e95329945d4f95605d599671cbb, type: 3}
+  GetHitSfx: {fileID: 8300000, guid: d5e493407fa9d314091438c59c4c0337, type: 3}
+  DeathSfx: {fileID: 8300000, guid: 719ee999328297f4da231d7d500d601e, type: 3}
   agent: {fileID: 4512456216578166041}
   animator: {fileID: 8409552012755234224}
   firePrefab: {fileID: 3390670577263124499, guid: aebc7bcc2710f294fa46907632d84b1e, type: 3}

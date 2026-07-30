@@ -233,6 +233,9 @@ MonoBehaviour:
   ManaSupply: 30
   ladderSpeed: 3
   audiosource: {fileID: 0}
+  pickupArrowSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
+  pickupCrossbowArrowSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
+  pickupManaSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
   knockbackForce: 20
 --- !u!82 &5053701831920036581
 AudioSource:
@@ -587,8 +590,13 @@ MonoBehaviour:
   invincibleCounter: 0
   healAmount: 10
   healPotion: 0
-  gethitsfx: {fileID: 0}
-  deathsfx: {fileID: 0}
+  damageOverlay: {fileID: 0}
+  flashSpeed: 2
+  lerpSpeed: 5
+  widthPerHP: 2.5
+  healsfx: {fileID: 8300000, guid: 8f91b4734d5558349992c393fd64bd3e, type: 3}
+  gethitsfx: {fileID: 8300000, guid: da4f39fe142d9144095bafc446511439, type: 3}
+  deathsfx: {fileID: 8300000, guid: ebd30251431bb35449ceba71ed03d281, type: 3}
 --- !u!1001 &477700408543963028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -688,7 +696,7 @@ MonoBehaviour:
   fireRate: 0.1
   fireCounter: 0
   currentAmmo: 100
-  Shootsfx: {fileID: 0}
+  Shootsfx: {fileID: 8300000, guid: d1931d4af92191f49aa55bc108a6072f, type: 3}
 --- !u!4 &481679711616167866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4051532076451886, guid: e55280988a6fa1843a32025141146c2a, type: 3}
@@ -797,7 +805,7 @@ MonoBehaviour:
   fireRate: 0
   fireCounter: 0
   currentAmmo: 35
-  Shootsfx: {fileID: 0}
+  Shootsfx: {fileID: 8300000, guid: 118d62522cae9ff4fa964c4c24ed5d8c, type: 3}
 --- !u!4 &3046589002670227020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2ee1a6e721f6afa46a396e641b2c42dd, type: 3}
@@ -926,7 +934,7 @@ MonoBehaviour:
   fireRate: 0
   fireCounter: 0
   currentAmmo: 15
-  Shootsfx: {fileID: 0}
+  Shootsfx: {fileID: 8300000, guid: 118d62522cae9ff4fa964c4c24ed5d8c, type: 3}
 --- !u!4 &7685411126598435742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e722d033369c024d84f11adcc0615b9, type: 3}

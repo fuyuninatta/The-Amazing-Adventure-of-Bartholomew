@@ -82,9 +82,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiniBossController
   currentHealth: 960
   MaxHealth: 960
-  SummonSfx: {fileID: 0}
-  GetHitSfx: {fileID: 0}
-  DeathSfx: {fileID: 0}
+  SummonSfx: {fileID: 8300000, guid: 7e612248c33418f4fbd2e5eae20b96d2, type: 3}
+  GetHitSfx: {fileID: 8300000, guid: c64541a444951844e93d1c3079e2c866, type: 3}
+  DeathSfx: {fileID: 8300000, guid: 48fbb75ca2edcc94f8d81453df351be6, type: 3}
   agent: {fileID: 7388471650735534754}
   anim: {fileID: 9223209917599551964}
   WeaponGate: {fileID: 2084652387018137141, guid: 51e065d157f25e543ab8a24d492a2e73, type: 3}
