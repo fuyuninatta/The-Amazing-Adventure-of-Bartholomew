@@ -110,8 +110,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 973, y: -436.39}
-  m_SizeDelta: {x: 190.2705, y: 188.4639}
+  m_AnchoredPosition: {x: 1155, y: -436.39}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &688019751934690301
 CanvasRenderer:
@@ -520,7 +520,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 973, y: -436.39}
-  m_SizeDelta: {x: 190.2705, y: 188.4639}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1006633768296549975
 CanvasRenderer:
@@ -856,7 +856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -614.6798, y: 338.15808}
+  m_AnchoredPosition: {x: 89, y: -90}
   m_SizeDelta: {x: 402.424, y: 49.428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8674654373896430585
@@ -900,7 +900,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "AMMO\uFF1A 1000"
+  m_Text: 20
 --- !u!114 &5017324630060302349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -614.6798, y: 278.15808}
+  m_AnchoredPosition: {x: 85, y: -90}
   m_SizeDelta: {x: 402.424, y: 49.428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &196712047016834926
@@ -1031,7 +1031,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "AMMO\uFF1A 1000"
+  m_Text: 10
 --- !u!114 &7387515692499755224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1312,8 +1312,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 973, y: -436.39}
-  m_SizeDelta: {x: 190.2705, y: 188.4639}
+  m_AnchoredPosition: {x: 791, y: -436.39}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5382173300293852918
 CanvasRenderer:
@@ -1649,7 +1649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -614.6798, y: 395.15808}
+  m_AnchoredPosition: {x: 88, y: -90}
   m_SizeDelta: {x: 402.424, y: 49.428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5461919754675197106
@@ -1693,7 +1693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "AMMO\uFF1A 1000"
+  m_Text: 30
 --- !u!114 &8769999907199117555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,15 +2219,16 @@ MonoBehaviour:
   SliderScale: {fileID: 6656924830836629422}
   healthText: {fileID: 8152825334429293291}
   healingPotionsText: {fileID: 7811515336062912717}
-  ammo1Text: {fileID: 1040888698730688252}
-  ammo2Text: {fileID: 3791167383762034727}
-  ammo3Text: {fileID: 7981280750593872285}
   timerText: {fileID: 4335930901435159316}
   timeElapsed: 0
   weaponBoxes:
   - {fileID: 4470590023570771599}
   - {fileID: 2817051898697161302}
   - {fileID: 214860004435635321}
+  ammoText:
+  - {fileID: 1040888698730688252}
+  - {fileID: 3791167383762034727}
+  - {fileID: 7981280750593872285}
 --- !u!1 &8132349007326769198
 GameObject:
   m_ObjectHideFlags: 0
