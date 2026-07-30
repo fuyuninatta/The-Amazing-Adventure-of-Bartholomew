@@ -25,8 +25,8 @@ public class HealthPickUp : MonoBehaviour
             if(HealingP)
             {
                 PlayerHeathController.instance.healPotion++;
-                PlayerController.instance.audiosource.PlayOneShot(pickuphealingPotionSFX, 0.50f);
-                UIController.instance.healingPotionsText.text = "Healing Potions: " + PlayerHeathController.instance.healPotion;
+                PlayerController.instance.audiosource.PlayOneShot(pickuphealingPotionSFX, 0.25f);
+                PlayerHeathController.instance.UpdateHealthUI();
             }
             else
             {
