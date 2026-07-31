@@ -4,6 +4,8 @@ using UnityEngine;
 public class StoryBoardController : MonoBehaviour
 {
     private TextMeshPro text;
+    public AudioClip Booksfx;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +24,7 @@ public class StoryBoardController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             text.enabled = true;
+            PlayerController.instance.audiosource.PlayOneShot(Booksfx,0.1f);
         }
     }
 
@@ -30,6 +33,7 @@ public class StoryBoardController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             text.enabled = false;
+            PlayerController.instance.audiosource.PlayOneShot(Booksfx, 0.1f);
         }
     }
 }
