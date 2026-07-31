@@ -87,6 +87,7 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
             PlayerController.instance.SaveGunData();
             transform.parent.gameObject.SetActive(false);
             currentHealth = 0;
+            PlayerPrefs.SetFloat("Timer", UIController.instance.timeElapsed);
             GameManager.instance.PlayerDied();
         }
         UpdateHealthUI();
@@ -121,7 +122,9 @@ public class PlayerHeathController : MonoBehaviour,IDamagable
                 transform.parent.gameObject.SetActive(false);
                 currentHealth = 0;
                 updateHealth();
+                PlayerPrefs.SetFloat("Timer", UIController.instance.timeElapsed);
                 GameManager.instance.PlayerDied();
+
             }
 
             invincibleCounter = invincibleLength;
