@@ -228,7 +228,7 @@ MonoBehaviour:
   - {fileID: 3632856787896450836}
   currentGun: 0
   maxGunIndex: 1
-  BowSupply: 10
+  BowSupply: 25
   CrossbowSupply: 10
   ManaSupply: 30
   ladderSpeed: 3
@@ -588,7 +588,7 @@ MonoBehaviour:
   AddMaxHealthAmount: 15
   invincibleLength: 0.2
   invincibleCounter: 0
-  healAmount: 10
+  healAmount: 50
   healPotion: 0
   damageOverlay: {fileID: 0}
   flashSpeed: 2

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7cf068cc7ae0545bb6fbf4ac307ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  distanceToChase: 10
+  distanceToChase: 25
   distanceToLose: 15
   distanceToStop: 2
   distanceToDestroy: 25

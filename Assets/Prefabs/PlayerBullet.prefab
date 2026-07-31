@@ -130,9 +130,12 @@ MonoBehaviour:
   moveSpeed: 15
   lifeTime: 5
   rb: {fileID: 7749872265384852243}
-  impactEffect: {fileID: 7014957094343536532, guid: 1869080c49e5a1243b90c04bedb00187, type: 3}
+  impactEffect: {fileID: 7904898002847524615, guid: a2ccf81a1d5b163448ebdf66b5e746d6, type: 3}
   attackPlayer: 0
   damage: 1
+  pierceCount: 0
+  KnockBackPower: 0
+  shooter: {fileID: 0}
 --- !u!54 &7749872265384852243
 Rigidbody:
   m_ObjectHideFlags: 0
