@@ -27,6 +27,8 @@ public class UIController : MonoBehaviour
         {
             timeElapsed = PlayerPrefs.GetFloat("Timer");
         }
+
+        UpdateTimerDisplay();
     }
 
     // Update is called once per frame
