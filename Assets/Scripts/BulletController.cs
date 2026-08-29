@@ -65,6 +65,14 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (impactEffect != null)
+        {
+            float offset = 0.7f;
+            Vector3 newPosition = transform.position - transform.forward * offset;
+
+            EffectObjectPoolManager.Instance.GetEffect(impactEffect.name, newPosition, transform.rotation);
+        }
+
         if (shooter != null && other.transform.root == shooter.root) return;//prevent shooting itself
 
         IDamagable damageable = other.GetComponentInParent<IDamagable>();
@@ -83,14 +91,6 @@ public class BulletController : MonoBehaviour
                 {
                     enemy.ApplyKnockback(transform.position, KnockBackPower);
                 }
-            }
-
-            if (impactEffect != null)
-            {
-                float offset = 0.7f;
-                Vector3 newPosition = transform.position - transform.forward * offset;
-
-                EffectObjectPoolManager.Instance.GetEffect(impactEffect.name, newPosition, transform.rotation);
             }
 
             if (remainingPierces > 0)
