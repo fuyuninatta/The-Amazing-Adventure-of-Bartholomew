@@ -94,8 +94,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
             }
             else
             {
-                float hitChance = Random.value; //0.0 - 1.0
-                if (hitChance < 0.3f)
+                if (Random.value < 0.01f)
                 {
                     anim.SetTrigger("GetHit");
                 }

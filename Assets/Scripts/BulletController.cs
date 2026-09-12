@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class BulletController : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class BulletController : MonoBehaviour
     public int pierceCount = 0;//0 can not pierce, >0 can pierce
     private int remainingPierces;
     private List<IDamagable> hitList = new List<IDamagable>();//record how many enemy get hit
+
+    // audio
+    public AudioClip hitImpactSFX;
 
     public float KnockBackPower;
 
@@ -71,6 +75,7 @@ public class BulletController : MonoBehaviour
             Vector3 newPosition = transform.position - transform.forward * offset;
 
             EffectObjectPoolManager.Instance.GetEffect(impactEffect.name, newPosition, transform.rotation);
+            PlayerController.instance.audiosource.PlayOneShot(hitImpactSFX, 0.25f);
         }
 
         if (shooter != null && other.transform.root == shooter.root) return;//prevent shooting itself

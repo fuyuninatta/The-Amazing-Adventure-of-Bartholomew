@@ -63,6 +63,7 @@ public class EnemyController : MonoBehaviour
         targetPoint = PlayerController.instance.transform.position;
         targetPoint.y = transform.position.y;//replacing his y target to be his y axis itself
 
+        //Remove corpse when corpse too far from player
         if (isDead)
         {
             if (Vector3.Distance(transform.position, targetPoint) >= distanceToDestroy)

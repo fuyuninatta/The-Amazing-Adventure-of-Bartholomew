@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     //Suply amount
     public int BowSupply = 10,CrossbowSupply = 10, ManaSupply = 10;
+    public int maxArrow = 200, maxCrossbowArrow = 100, maxMana = 50;
 
     //ladder
     public float ladderSpeed = 3.0f;
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     //audio source
     public AudioSource audiosource;
-    public AudioClip pickupArrowSFX, pickupCrossbowArrowSFX, pickupManaSFX;
+    public AudioClip pickupArrowSFX, pickupCrossbowArrowSFX, pickupManaSFX,jumpSFX,DashSFX;
     
     //knockback by boss
     private float knockbackTimer;
@@ -86,6 +87,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //must remove before showcase
+        if (Input.GetKey(KeyCode.O))
+        {
+            maxGunIndex = 3;
+            allGuns[0].currentAmmo = maxArrow;
+            allGuns[1].currentAmmo = maxCrossbowArrow;
+            allGuns[2].currentAmmo = maxMana;
+            AmmoUpdate();
+        }
+
         //moveInput.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         //moveInput.z = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
@@ -118,6 +129,7 @@ public class PlayerController : MonoBehaviour
             {
                 isClimbing = false;
                 moveInput.y = jumpingPower;
+                audiosource.PlayOneShot(jumpSFX, 0.25f);
             }
             else//when climbing ladder, player can only move up and down
             {
@@ -156,6 +168,7 @@ public class PlayerController : MonoBehaviour
         {
             moveInput.y = jumpingPower;
             jumping--;
+            audiosource.PlayOneShot(jumpSFX, 0.25f);
         }
 
         charCon.Move(moveInput * Time.deltaTime);
@@ -204,6 +217,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1) && dashTimer <= 0 &&charCon.isGrounded)
         {
             dashTimer = dashDuration;
+            audiosource.PlayOneShot(DashSFX, 0.25f);
         }
 
         if(dashTimer >0)
@@ -286,16 +300,28 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("BowArrow"))
             {
                 allGuns[0].currentAmmo += BowSupply;
+                if (allGuns[0].currentAmmo >= maxArrow)
+                {
+                    allGuns[0].currentAmmo = maxArrow;
+                }
                 audiosource.PlayOneShot(pickupArrowSFX, 0.25f);
             }
             else if (other.gameObject.CompareTag("CrossbowArrow"))
             {
                 allGuns[1].currentAmmo += CrossbowSupply;
+                if (allGuns[0].currentAmmo >= maxCrossbowArrow)
+                {
+                    allGuns[0].currentAmmo = maxCrossbowArrow;
+                }
                 audiosource.PlayOneShot(pickupCrossbowArrowSFX, 0.25f);
             }
             else if (other.gameObject.CompareTag("Mana"))
             {
                 allGuns[2].currentAmmo += ManaSupply;
+                if (allGuns[0].currentAmmo >= maxMana)
+                {
+                    allGuns[0].currentAmmo = maxMana;
+                }
                 audiosource.PlayOneShot(pickupManaSFX, 0.25f);
             }
 
