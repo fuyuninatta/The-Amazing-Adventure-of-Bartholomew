@@ -95,6 +95,9 @@ public class PlayerController : MonoBehaviour
             allGuns[1].currentAmmo = maxCrossbowArrow;
             allGuns[2].currentAmmo = maxMana;
             AmmoUpdate();
+
+            PlayerHeathController.instance.currentHealth = PlayerHeathController.instance.maxHealth;
+            PlayerHeathController.instance.UpdateHealthUI();
         }
 
         //moveInput.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
