@@ -309,18 +309,18 @@ public class PlayerController : MonoBehaviour
             else if (other.gameObject.CompareTag("CrossbowArrow"))
             {
                 allGuns[1].currentAmmo += CrossbowSupply;
-                if (allGuns[0].currentAmmo >= maxCrossbowArrow)
+                if (allGuns[1].currentAmmo >= maxCrossbowArrow)
                 {
-                    allGuns[0].currentAmmo = maxCrossbowArrow;
+                    allGuns[1].currentAmmo = maxCrossbowArrow;
                 }
                 audiosource.PlayOneShot(pickupCrossbowArrowSFX, 0.25f);
             }
             else if (other.gameObject.CompareTag("Mana"))
             {
                 allGuns[2].currentAmmo += ManaSupply;
-                if (allGuns[0].currentAmmo >= maxMana)
+                if (allGuns[2].currentAmmo >= maxMana)
                 {
-                    allGuns[0].currentAmmo = maxMana;
+                    allGuns[2].currentAmmo = maxMana;
                 }
                 audiosource.PlayOneShot(pickupManaSFX, 0.25f);
             }
