@@ -36,7 +36,15 @@ public class SummonEnemy : MonoBehaviour
             //choose random enemy
             int randomEnemyIndex = Random.Range(0, EnemyPrefabs.Count);
             //spawn all enemies
-            Instantiate(EnemyPrefabs[randomEnemyIndex], point.position, point.rotation);
+            Instantiate(EnemyPrefabs[randomEnemyIndex], point.position, point.rotation, point);
+        }
+    }
+
+    public void DestroyEnemy()
+    {
+        foreach(Transform point in spawnPoints)
+        {
+            Destroy(point.gameObject);
         }
     }
 }

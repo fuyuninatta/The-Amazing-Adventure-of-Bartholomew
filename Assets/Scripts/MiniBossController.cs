@@ -124,7 +124,9 @@ public class MiniBossController : MonoBehaviour, IDamagable
         anim.SetBool("isalive", false);
         anim.SetTrigger("Dead");
         HealthBarGO.SetActive(false);
-        
+
+        SummonEnemy.instance.DestroyEnemy();
+
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
     }

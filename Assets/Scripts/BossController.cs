@@ -296,6 +296,8 @@ public class BossController : MonoBehaviour, IDamagable
         animator.SetTrigger("Land");
         animator.SetTrigger("Dead");
 
+        SummonEnemy.instance.DestroyEnemy();
+
         hitbox.SetActive(false);
         HealthBarGO.SetActive(false);
         FinalGate.SetActive(false);
