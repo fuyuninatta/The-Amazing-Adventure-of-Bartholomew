@@ -44,6 +44,8 @@ public class EnemyController : MonoBehaviour
 
     private bool isDead = false;
 
+    public bool alwayschase = false;
+
     public GameObject HealthBarGO;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,6 +57,11 @@ public class EnemyController : MonoBehaviour
         shotWaitCounter = waitBetweenShots;
 
         PrepareBulletPool();
+
+        if (alwayschase)
+        {
+            chasing = true;
+        }
     }
 
     // Update is called once per frame
@@ -125,9 +132,11 @@ public class EnemyController : MonoBehaviour
 
             if (Vector3.Distance(transform.position, targetPoint) > distanceToLose)//out of chasing distance
             {
-                chasing = false;
-
-                chaseCounter = keepChasingTime;
+                if(!alwayschase)
+                {
+                    chasing = false;
+                    chaseCounter = keepChasingTime;
+                }
             }
 
 
@@ -269,5 +278,10 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = true;
             anim.SetTrigger("GetHit");
         }  
+    }
+
+    public void SetAlwaysChase()
+    {
+        alwayschase = true;
     }
 }

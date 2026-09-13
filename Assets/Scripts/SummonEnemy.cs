@@ -36,7 +36,8 @@ public class SummonEnemy : MonoBehaviour
             //choose random enemy
             int randomEnemyIndex = Random.Range(0, EnemyPrefabs.Count);
             //spawn all enemies
-            Instantiate(EnemyPrefabs[randomEnemyIndex], point.position, point.rotation, point);
+            GameObject SpawnedEnemy = Instantiate(EnemyPrefabs[randomEnemyIndex], point.position, point.rotation, point);
+            SpawnedEnemy.GetComponent<EnemyController>().SetAlwaysChase();
         }
     }
 
