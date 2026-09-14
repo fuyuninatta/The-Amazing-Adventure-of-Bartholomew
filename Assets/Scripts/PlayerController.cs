@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
     public float mouseSensitivity;
+    private float cameraPitch = 0f;//prevent camera flip
 
     //fallen damage
     public float minFallSpeed = -15f;
@@ -181,7 +182,9 @@ public class PlayerController : MonoBehaviour
         //player looking rotation(left and right)
         Vector2 mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z);
-        camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
+        cameraPitch -= mouseInput.y;
+        cameraPitch = Mathf.Clamp(cameraPitch, -80f, 80f);
+        camTrans.localRotation = Quaternion.Euler(cameraPitch, 0f, 0f);
 
         //Handle the shooting
         if (Input.GetMouseButtonDown(0) && activeGun.fireCounter <= 0)
@@ -250,7 +253,14 @@ public class PlayerController : MonoBehaviour
         //shoot
         if (Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50f))
         {
-            firePoint.LookAt(hit.point);
+            if (Vector3.Distance(firePoint.position, hit.point) > 1.0f)
+            {
+                firePoint.LookAt(hit.point);
+            }
+            else
+            {
+                firePoint.rotation = camTrans.rotation;
+            }
         }
         else
         {

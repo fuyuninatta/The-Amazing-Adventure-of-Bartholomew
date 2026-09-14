@@ -32,24 +32,6 @@ public class BulletController : MonoBehaviour
     public float KnockBackPower;
 
     [HideInInspector] public Transform shooter;
-    public void SetReturnAction(Action<BulletController> returnAction)
-    {
-        returnToPool = returnAction;
-    }
-
-    public void Fire()
-    {
-        hasHit = false;
-        lifeCounter = lifeTime;
-
-        //reset pierce variables
-        remainingPierces = pierceCount;
-        hitList.Clear();
-
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        rb.linearVelocity = transform.forward * moveSpeed;
-    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,6 +51,9 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //prevent shooting itself
+        if (shooter != null && other.transform.root == shooter.root) return;
+
         if (impactEffect != null)
         {
             float offset = 0.7f;
@@ -77,8 +62,6 @@ public class BulletController : MonoBehaviour
             EffectObjectPoolManager.Instance.GetEffect(impactEffect.name, newPosition, transform.rotation);
             PlayerController.instance.audiosource.PlayOneShot(hitImpactSFX, 0.25f);
         }
-
-        if (shooter != null && other.transform.root == shooter.root) return;//prevent shooting itself
 
         IDamagable damageable = other.GetComponentInParent<IDamagable>();
 
@@ -122,6 +105,30 @@ public class BulletController : MonoBehaviour
         else
         {
             gameObject.SetActive(false);//a safety fallback, just in case it is not connected to the pool, just disable it
+        }
+    }
+
+    public void SetReturnAction(Action<BulletController> returnAction)
+    {
+        returnToPool = returnAction;
+    }
+
+    public void Fire()
+    {
+        hasHit = false;
+        lifeCounter = lifeTime;
+
+        //reset pierce variables
+        remainingPierces = pierceCount;
+        hitList.Clear();
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        rb.linearVelocity = transform.forward * moveSpeed;
+
+        if (shooter != null)
+        {
+            Physics.IgnoreCollision(GetComponent<Collider>(), shooter.GetComponent<Collider>(), true);
         }
     }
 }
