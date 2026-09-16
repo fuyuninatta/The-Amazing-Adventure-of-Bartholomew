@@ -54,16 +54,21 @@ public class BulletController : MonoBehaviour
         //prevent shooting itself
         if (shooter != null && other.transform.root == shooter.root) return;
 
+        IDamagable damageable = other.GetComponentInParent<IDamagable>();
+
         if (impactEffect != null)
         {
             float offset = 0.7f;
             Vector3 newPosition = transform.position - transform.forward * offset;
 
             EffectObjectPoolManager.Instance.GetEffect(impactEffect.name, newPosition, transform.rotation);
-            PlayerController.instance.audiosource.PlayOneShot(hitImpactSFX, 0.25f);
+            if (damageable == null)
+            {
+                PlayerController.instance.audiosource.PlayOneShot(hitImpactSFX, 0.25f);
+            }
         }
 
-        IDamagable damageable = other.GetComponentInParent<IDamagable>();
+        
 
         if (damageable != null)
         {

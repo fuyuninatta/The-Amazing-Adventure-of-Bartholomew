@@ -6,6 +6,13 @@ public class SpawnBoss : MonoBehaviour
     public GameObject Gate;
     public GameObject BGM1, BGM2;
 
+    public static SpawnBoss instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,5 +37,10 @@ public class SpawnBoss : MonoBehaviour
             BGM1.gameObject.SetActive(false);
             BGM2.gameObject.SetActive(true);
         }
+    }
+
+    public void closeBGM()
+    {
+        BGM2.gameObject.SetActive(false);
     }
 }

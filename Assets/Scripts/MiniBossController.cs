@@ -31,6 +31,11 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
+
+        action = true;
+        anim.SetTrigger("Summon");
+        PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
+        SummonEnemy.instance.spawnEnemy();
     }
 
     // Update is called once per frame
@@ -84,7 +89,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
         if (!attackPlayer)
         {
             currentHealth -= damage;
-            PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.6f);
 
             if (currentHealth <= 0)
             {
@@ -97,6 +101,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
                 if (Random.value < 0.01f)
                 {
                     anim.SetTrigger("GetHit");
+                    PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.6f);
                 }
             }
         }
@@ -106,11 +111,11 @@ public class MiniBossController : MonoBehaviour, IDamagable
     {
         float randomVal = Random.value;//0.0 - 1.0
 
-        if (randomVal < 0.7f)//70% free roam
+        if (randomVal < 0.85f)//85% free roam
         {
             action = false;
         }
-        else//30% chance to summon minions
+        else//15% chance to summon minions
         {
             action = true;
         }
@@ -126,6 +131,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
         HealthBarGO.SetActive(false);
 
         SummonEnemy.instance.DestroyEnemy();
+        SpawnBoss.instance.closeBGM();
 
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);

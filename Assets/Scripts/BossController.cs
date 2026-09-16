@@ -245,8 +245,8 @@ public class BossController : MonoBehaviour, IDamagable
             {
                 if (Random.value < 0.01f && !phase2)//only phase 1 have get hit animation (1% chance)
                 {
-                    PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
                     animator.SetTrigger("GetHit");
+                    PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
                 }
             }
         }
@@ -270,11 +270,11 @@ public class BossController : MonoBehaviour, IDamagable
     {
         float randomVal = Random.value;//0.0 - 1.0
 
-        if (randomVal < 0.7f)//70% chance to shoot
+        if (randomVal < 0.85f)//85% chance to shoot
         {
             phase2action = 1;
         }
-        else//30% chance to summon minions
+        else//15% chance to summon minions
         {
             phase2action = 2;
         }
@@ -297,6 +297,7 @@ public class BossController : MonoBehaviour, IDamagable
         animator.SetTrigger("Dead");
 
         SummonEnemy.instance.DestroyEnemy();
+        SpawnBoss.instance.closeBGM();
 
         hitbox.SetActive(false);
         HealthBarGO.SetActive(false);
