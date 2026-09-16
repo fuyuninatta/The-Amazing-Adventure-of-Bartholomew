@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class BossController : MonoBehaviour, IDamagable
 {
     public int currentHealth, MaxHealth = 10;
-    private bool phase2 = false, died=false;
+    private bool phase2 = false, died = false;
 
     public float meleeDistance = 5f;
     public GameObject hitbox;

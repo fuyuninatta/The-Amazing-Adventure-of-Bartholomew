@@ -68,8 +68,6 @@ public class BulletController : MonoBehaviour
             }
         }
 
-        
-
         if (damageable != null)
         {
             if (hitList.Contains(damageable)) return;//prevent repeat hit

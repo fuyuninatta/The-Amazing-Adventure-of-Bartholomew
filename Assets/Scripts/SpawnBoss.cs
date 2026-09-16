@@ -5,6 +5,7 @@ public class SpawnBoss : MonoBehaviour
     public GameObject Boss;
     public GameObject Gate;
     public GameObject BGM1, BGM2;
+    public GameObject SummonEffect; 
 
     public static SpawnBoss instance;
 
@@ -32,6 +33,8 @@ public class SpawnBoss : MonoBehaviour
             //set up boss, boss health, gate
             Boss.gameObject.SetActive(true);
             Gate.gameObject.SetActive(true);
+
+            Instantiate(SummonEffect,Boss.transform);
 
             //CHANGE BGM
             BGM1.gameObject.SetActive(false);

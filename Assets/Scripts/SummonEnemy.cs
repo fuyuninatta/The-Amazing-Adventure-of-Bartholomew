@@ -41,6 +41,9 @@ public class SummonEnemy : MonoBehaviour
             //spawn all enemies
             GameObject SpawnedEnemy = Instantiate(EnemyPrefabs[randomEnemyIndex], point.position + randomOffset, point.rotation, point);
             SpawnedEnemy.GetComponent<EnemyController>().SetAlwaysChase();
+
+            //summon effect
+            Instantiate(SpawnBoss.instance.SummonEffect, point.position + randomOffset, point.rotation, point);
         }
     }
 

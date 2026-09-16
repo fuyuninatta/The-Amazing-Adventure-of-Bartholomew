@@ -111,6 +111,7 @@ MonoBehaviour:
   ShootSfx: {fileID: 8300000, guid: 365f1624cbc224a42aed68fe1617de72, type: 3}
   KnockbackForce: 8
   isMelee: 1
+  alwayschase: 0
   HealthBarGO: {fileID: 8403197746047859062}
 --- !u!195 &7388471650735534754
 NavMeshAgent:
@@ -223,7 +224,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
