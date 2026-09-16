@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -73,7 +74,7 @@ public class BossController : MonoBehaviour, IDamagable
             //phase 1 (melee attack or shoot fire or chase)
             if(isAttacking)//if attacking stop repeating the attack animation
             {
-                if(animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))//if current animation is idle set isattacking to false
+                if(animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))//if current animation is walk set isattacking to false
                 {
                     isAttacking = false;
                     agent.destination = playerPos;
@@ -128,8 +129,6 @@ public class BossController : MonoBehaviour, IDamagable
             {
                 agent.destination = playerPos;
             }
-
-            animator.SetFloat("Speed", agent.velocity.magnitude);
 
             //change to phase two if current health is half
             if (currentHealth <= (MaxHealth / 2))
@@ -244,7 +243,7 @@ public class BossController : MonoBehaviour, IDamagable
             }
             else
             {
-                if (Random.value < 0.01f && !phase2)//only phase 1 have get hit animation (1% chance)
+                if (Random.value < 0.035f && !phase2)//only phase 1 have get hit animation
                 {
                     animator.SetTrigger("GetHit");
                     PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.2f);
@@ -285,6 +284,7 @@ public class BossController : MonoBehaviour, IDamagable
     {
         animator.SetTrigger("Scream");
         PlayerController.instance.audiosource.PlayOneShot(ScreamSfx,0.6f);
+        CameraController.Instance.Shake();
         SummonEnemy.instance.spawnEnemy();
 
     }
@@ -320,7 +320,7 @@ public class BossController : MonoBehaviour, IDamagable
     public void ResetReturn()
     {
         isReturning = false;
-        isAttacking = false;    
+        isAttacking = false;
     }
 
     private void Fire()

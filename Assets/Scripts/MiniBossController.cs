@@ -14,6 +14,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public GameObject HealthBarGO;
 
     private bool action = false;//true:summon, false:free roam
+    public float spawnfreq = 0.3f;
     public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
 
     //UI
@@ -29,10 +30,10 @@ public class MiniBossController : MonoBehaviour, IDamagable
     {
         currentHealth = MaxHealth;
         healthBar = GetComponent<HealthBar>();
-        actionTimer = actionDuration;
         hitbox = GetComponentInChildren<Collider>();
 
         action = true;
+        actionTimer = actionDuration;
         anim.SetTrigger("Summon");
         PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
         SummonEnemy.instance.spawnEnemy();
@@ -78,6 +79,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
                     Debug.Log("summon");
                     anim.SetTrigger("Summon");
                     PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
+                CameraController.Instance.Shake();
                     SummonEnemy.instance.spawnEnemy();
                 }
              actionTimer = actionDuration;
@@ -98,7 +100,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
             }
             else
             {
-                if (Random.value < 0.01f)
+                if (Random.value < 0.035f)
                 {
                     anim.SetTrigger("GetHit");
                     PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.6f);
@@ -110,14 +112,14 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public void RandomAction()
     {
         float randomVal = Random.value;//0.0 - 1.0
-
-        if (randomVal < 0.85f)//85% free roam
-        {
-            action = false;
-        }
-        else//15% chance to summon minions
+        
+        if (randomVal < spawnfreq)//chance to summon minions
         {
             action = true;
+        }
+        else//chance to free roam
+        {
+            action = false;
         }
     }
 

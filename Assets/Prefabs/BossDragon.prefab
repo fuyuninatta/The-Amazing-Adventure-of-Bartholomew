@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4042420989025692847
 Transform:
   m_ObjectHideFlags: 0
@@ -80,10 +80,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   currentHealth: 2560
   MaxHealth: 2560
-  meleeDistance: 5.5
+  meleeDistance: 6.5
   hitbox: {fileID: 7995169551160852399}
   FinalGate: {fileID: 0}
-  fireDistance: 12
+  fireDistance: 15
   firePoint: {fileID: 3271142603758538862}
   fireRate: 1.5
   ScreamSfx: {fileID: 8300000, guid: 5419b931b421d2d4f93fd0fcef3e45cb, type: 3}
@@ -272,19 +272,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673175692752405680, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4673175692752405680, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5247674001076993601, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5247674001076993601, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.x

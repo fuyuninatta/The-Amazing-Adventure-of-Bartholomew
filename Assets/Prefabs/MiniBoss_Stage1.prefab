@@ -89,6 +89,7 @@ MonoBehaviour:
   anim: {fileID: 603222084184063581}
   WeaponGate: {fileID: 7212345242401409229, guid: 93f7bca0f58f1a945a76bbf334803b44, type: 3}
   HealthBarGO: {fileID: 6230886786601852902}
+  spawnfreq: 0.3
   actionTimer: 0
   actionDuration: 5
   freeroamRange: 10
