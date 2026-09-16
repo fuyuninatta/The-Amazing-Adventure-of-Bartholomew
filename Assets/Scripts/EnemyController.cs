@@ -39,7 +39,6 @@ public class EnemyController : MonoBehaviour
     private Vector3 knockbackVel;
     public float KnockbackForce = 8f;
 
-    //decide the enemy is melee or not
     public bool isMelee = false;
 
     private bool isDead = false;
@@ -54,7 +53,14 @@ public class EnemyController : MonoBehaviour
         originalPoint = transform.position;
 
         ShootTimeCounter = timeToShoot;
-        shotWaitCounter = waitBetweenShots;
+        if (isMelee)
+        {
+            shotWaitCounter = 0;
+        }
+        else
+        {
+            shotWaitCounter = waitBetweenShots;
+        }
 
         PrepareBulletPool();
 
@@ -69,11 +75,12 @@ public class EnemyController : MonoBehaviour
     {
         targetPoint = PlayerController.instance.transform.position;
         targetPoint.y = transform.position.y;//replacing his y target to be his y axis itself
+        float distanceToPlayer = Vector3.Distance(transform.position, targetPoint);
 
         //Remove corpse when corpse too far from player
         if (isDead)
         {
-            if (Vector3.Distance(transform.position, targetPoint) >= distanceToDestroy)
+            if (distanceToPlayer >= distanceToDestroy)
             {
                 Destroy(gameObject);
             }
@@ -86,6 +93,10 @@ public class EnemyController : MonoBehaviour
             knockbackTimer -= Time.deltaTime;
             agent.Move(knockbackVel * Time.deltaTime);
             return;//skip follow player
+        }
+        else
+        {
+            agent.isStopped = false;
         }
 
         if (!chasing)//chasing is false
@@ -100,7 +111,7 @@ public class EnemyController : MonoBehaviour
                 agent.destination = originalPoint;//go back to starting position
             }
 
-            if (Vector3.Distance(transform.position, targetPoint) <= distanceToChase)//within chasing distance
+            if (distanceToPlayer <= distanceToChase)//within chasing distance
             {
                 chasing = true;
 
@@ -121,77 +132,90 @@ public class EnemyController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPoint - transform.position), Time.deltaTime * 10f);
 
-            if (Vector3.Distance(transform.position, targetPoint) <= distanceToStop)//distance within 2m
+            if (distanceToPlayer > distanceToLose && !alwayschase)
             {
-                agent.destination = transform.position;//stop at his current position
-            }
-            else//more than 2m
-            {
-                agent.destination = targetPoint;//chase the player
+                chasing = false;
+                chaseCounter = keepChasingTime;
             }
 
-            if (Vector3.Distance(transform.position, targetPoint) > distanceToLose)//out of chasing distance
+            if (isMelee)
             {
-                if(!alwayschase)
+                //chase if player far away from enemy
+                if (distanceToPlayer > distanceToStop)
                 {
-                    chasing = false;
-                    chaseCounter = keepChasingTime;
-                }
-            }
-
-
-            if (shotWaitCounter > 0)
-            {
-                shotWaitCounter -= Time.deltaTime;
-
-                if (shotWaitCounter <= 0)
-                {
-                    ShootTimeCounter = timeToShoot;
-                }
-
-                anim.SetBool("isMoving", true);
-            }
-            else if (PlayerController.instance.gameObject.activeInHierarchy)//just proceed the shooting when the player is active only
-            {
-                ShootTimeCounter -= Time.deltaTime;
-
-                if (ShootTimeCounter > 0)//shoot within shootTimeCounter period
-                {
-                    fireCount -= Time.deltaTime;
-
-                    if (fireCount <= 0)
-                    {
-                        fireCount = fireRate;
-                        Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
-                        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
-
-                        firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 0.4f, 0f));
-                        Vector3 targetDir = PlayerController.instance.transform.position - transform.position;//get direction
-                        float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);//measuring the angle towards player
-
-                        //only shoot when angle is less than 30
-                        //for melee enemy, it will only attack when it reach the distance to stop
-                        if (Math.Abs(angle) <= 30 && (!isMelee || Vector3.Distance(transform.position, targetPoint) <= distanceToStop))
-                        {
-                            // Instantiate(bullet, firePoint.position, firePoint.rotation);
-                            GetBullet(firePoint.position, firePoint.rotation);
-
-                            anim.SetTrigger("fireShot");
-                        }
-                        else
-                        {
-                            shotWaitCounter = waitBetweenShots;
-                        }
-                    }
-
-                    agent.destination = transform.position;//stop while shooting
+                    agent.destination = targetPoint;
+                    anim.SetBool("isMoving", true);
                 }
                 else
                 {
-                    shotWaitCounter = waitBetweenShots;
+                    //attack
+                    agent.destination = transform.position;
+                    anim.SetBool("isMoving", false);
+
+                    shotWaitCounter -= Time.deltaTime;
+                    if (shotWaitCounter <= 0)
+                    {
+                        anim.SetTrigger("fireShot");
+                        GetBullet(firePoint.position, firePoint.rotation);
+                        shotWaitCounter = waitBetweenShots;
+                    }
+                }
+            }
+            else
+            {
+                //range enemy
+                if (distanceToPlayer <= distanceToStop)
+                {
+                    agent.destination = transform.position;
+                }
+                else
+                {
+                    agent.destination = targetPoint;
                 }
 
-                anim.SetBool("isMoving", false);
+                if (shotWaitCounter > 0)
+                {
+                    shotWaitCounter -= Time.deltaTime;
+                    if (shotWaitCounter <= 0)
+                    {
+                        ShootTimeCounter = timeToShoot;
+                    }
+                    anim.SetBool("isMoving", true);
+                }
+                else if (PlayerController.instance.gameObject.activeInHierarchy)
+                {
+                    ShootTimeCounter -= Time.deltaTime;
+
+                    if (ShootTimeCounter > 0)
+                    {
+                        fireCount -= Time.deltaTime;
+
+                        if (fireCount <= 0)
+                        {
+                            fireCount = fireRate;
+                            Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
+                            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
+                            firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 0.4f, 0f));
+                            Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
+                            float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
+
+                            if (Math.Abs(angle) <= 30)
+                            {
+                                GetBullet(firePoint.position, firePoint.rotation);
+                                anim.SetTrigger("fireShot");
+                            }
+                        }
+
+                        agent.destination = transform.position;
+                    }
+                    else
+                    {
+                        shotWaitCounter = waitBetweenShots;
+                    }
+
+                    anim.SetBool("isMoving", false);
+                }
             }
         }
     }
@@ -257,7 +281,7 @@ public class EnemyController : MonoBehaviour
 
         //calculate knockback power
         knockbackVel = dir * force;
-        knockbackTimer = force * 0.02f;
+        knockbackTimer = force * 0.04f;
     }
 
     public void Dead()
@@ -268,7 +292,6 @@ public class EnemyController : MonoBehaviour
         Collider hitbox = GetComponentInChildren<Collider>();
         hitbox.enabled = false;
         HealthBarGO.SetActive(false);
-
     }
 
     public void GetHitAnim()

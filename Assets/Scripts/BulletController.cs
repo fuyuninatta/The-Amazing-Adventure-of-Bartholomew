@@ -131,7 +131,7 @@ public class BulletController : MonoBehaviour
 
         if (shooter != null)
         {
-            Physics.IgnoreCollision(GetComponent<Collider>(), shooter.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(GetComponent<Collider>(), shooter.GetComponentInChildren<Collider>(), true);
         }
     }
 }

@@ -53,6 +53,7 @@ public class BossController : MonoBehaviour, IDamagable
         PrepareFirePool();
         originalPos = transform.position;
         originalRot = transform.rotation;
+        PlayerController.instance.audiosource.PlayOneShot(ScreamSfx, 0.6f);
     }
 
     // Update is called once per frame
@@ -61,7 +62,6 @@ public class BossController : MonoBehaviour, IDamagable
         if (died) return;
 
         Vector3 playerPos = PlayerController.instance.transform.position;
-        if (playerPos == null) return;//prevent error
 
         if (fireCounter > 0)
         {
@@ -76,6 +76,7 @@ public class BossController : MonoBehaviour, IDamagable
                 if(animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))//if current animation is idle set isattacking to false
                 {
                     isAttacking = false;
+                    agent.destination = playerPos;
                 }
                 else
                 {

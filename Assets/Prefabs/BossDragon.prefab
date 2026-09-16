@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 4042420989025692847}
   - component: {fileID: 8578137340943137717}
   - component: {fileID: 4512456216578166041}
-  - component: {fileID: 6530059869752401119}
   m_Layer: 0
   m_Name: BossDragon
   m_TagString: Untagged
@@ -119,20 +118,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6530059869752401119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484716859071693240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6189c0f469ce3fd4482dee591e338fb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossHealthBar
-  healthSlider: {fileID: 0}
-  easeHealthSlider: {fileID: 0}
 --- !u!1 &6515078078304207268
 GameObject:
   m_ObjectHideFlags: 0
