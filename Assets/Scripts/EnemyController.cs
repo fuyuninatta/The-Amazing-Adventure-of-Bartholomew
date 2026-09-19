@@ -47,6 +47,9 @@ public class EnemyController : MonoBehaviour
 
     public GameObject HealthBarGO;
 
+    //melee attack animation
+    private AttackTrigger attackTrigger;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,6 +71,8 @@ public class EnemyController : MonoBehaviour
         {
             chasing = true;
         }
+
+        attackTrigger = GetComponentInChildren<AttackTrigger>();
     }
 
     // Update is called once per frame
@@ -97,6 +102,13 @@ public class EnemyController : MonoBehaviour
         else
         {
             agent.isStopped = false;
+        }
+
+        //Trigger Melee Attack
+        if (attackTrigger != null && attackTrigger.Attack)
+        {
+            Attack();
+            attackTrigger.Attack = false;
         }
 
         if (!chasing)//chasing is false
