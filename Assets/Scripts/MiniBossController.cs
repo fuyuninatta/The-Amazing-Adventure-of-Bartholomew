@@ -43,7 +43,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
         if(SummonTrigger.Trigger)
         {
             isSummoning = false;
-            Debug.Log("Stupid");
             SummonTimer = SummonDuration;
             SummonTrigger.Trigger = false;
         }

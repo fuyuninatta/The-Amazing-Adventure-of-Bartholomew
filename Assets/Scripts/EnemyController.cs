@@ -110,6 +110,15 @@ public class EnemyController : MonoBehaviour
             Attack();
             attackTrigger.Trigger = false;
         }
+        
+        if (agent.velocity.magnitude < 0.1f)
+        {
+            anim.SetBool("isMoving", false);
+        }
+        else
+        {
+            anim.SetBool("isMoving", true);
+        }
 
         if (!chasing)//chasing is false
         {
@@ -131,14 +140,7 @@ public class EnemyController : MonoBehaviour
                 shotWaitCounter = waitBetweenShots;
             }
 
-            if (agent.remainingDistance < 0.25f)
-            {
-                anim.SetBool("isMoving", false);
-            }
-            else
-            {
-                anim.SetBool("isMoving", true);
-            }
+            
         }
         else//chasing is true, he is chasing us here
         {
@@ -156,13 +158,11 @@ public class EnemyController : MonoBehaviour
                 if (distanceToPlayer > distanceToStop)
                 {
                     agent.destination = targetPoint;
-                    anim.SetBool("isMoving", true);
                 }
                 else
                 {
                     //attack
                     agent.destination = transform.position;
-                    anim.SetBool("isMoving", false);
 
                     shotWaitCounter -= Time.deltaTime;
                     if (shotWaitCounter <= 0)
