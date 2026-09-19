@@ -289,14 +289,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 285908079454775293, guid: ffa177584149ea543a05923fac086640, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 285908079454775293, guid: ffa177584149ea543a05923fac086640, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 918957675890546877, guid: ffa177584149ea543a05923fac086640, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.85
@@ -340,14 +332,6 @@ PrefabInstance:
     - target: {fileID: 2032783186345831952, guid: ffa177584149ea543a05923fac086640, type: 3}
       propertyPath: m_Name
       value: MiniBoss_Stage2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032783186345831952, guid: ffa177584149ea543a05923fac086640, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4138818613862281603, guid: ffa177584149ea543a05923fac086640, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -723,29 +707,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6058198524135611008, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058198524135611008, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_Name
       value: BossDragon
-      objectReference: {fileID: 0}
-    - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636621737857802353, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6636621737857802353, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -791,14 +755,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 285908079454775293, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 285908079454775293, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 918957675890546877, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.18879
@@ -842,14 +798,6 @@ PrefabInstance:
     - target: {fileID: 2032783186345831952, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
       propertyPath: m_Name
       value: MiniBoss_Stage1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2032783186345831952, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4138818613862281603, guid: 1195848384f6bd64285440d2a8eb4977, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

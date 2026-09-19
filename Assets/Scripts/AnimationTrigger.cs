@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AttackTrigger : MonoBehaviour
+public class AnimationTrigger : MonoBehaviour
 {
-    public bool Attack = false;
+    public bool Trigger = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,8 +15,8 @@ public class AttackTrigger : MonoBehaviour
         
     }
 
-    public void TriggerAttack()
+    public void TriggerAnimation()
     {
-        Attack = true;
+        Trigger = true;
     }
 }

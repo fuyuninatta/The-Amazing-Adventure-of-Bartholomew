@@ -13,9 +13,9 @@ public class MiniBossController : MonoBehaviour, IDamagable
     public GameObject WeaponGate;
     public GameObject HealthBarGO;
 
-    private bool action = false;//true:summon, false:free roam
-    public float spawnfreq = 0.3f;
-    public float actionTimer = 0f, actionDuration = 5f, freeroamRange = 10f;
+    public float SummonTimer = 0f, SummonDuration = 15f, freeroamRange = 10f;
+    private bool isSummoning = false;
+    private AnimationTrigger SummonTrigger;
 
     //UI
     private HealthBar healthBar;
@@ -24,65 +24,51 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
     private bool isDead = false;
     public Transform spawnitemPos;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = MaxHealth;
         healthBar = GetComponent<HealthBar>();
         hitbox = GetComponentInChildren<Collider>();
-
-        action = true;
-        actionTimer = actionDuration;
-        anim.SetTrigger("Summon");
-        PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
-        SummonEnemy.instance.spawnEnemy();
+        SummonTrigger = GetComponentInChildren<AnimationTrigger>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isDead) return;
-
         Vector3 playerPos = PlayerController.instance.transform.position;
 
-        if (agent.remainingDistance < 0.25f)
+        if(SummonTrigger.Trigger)
         {
-            anim.SetBool("isMoving", false);
-        }
-        else
-        {
-            anim.SetBool("isMoving", true);
+            isSummoning = false;
+            Debug.Log("Stupid");
+            SummonTimer = SummonDuration;
+            SummonTrigger.Trigger = false;
         }
 
-        if (actionTimer > 0)
+        if (isSummoning) return;
+
+        if (SummonTimer > 0)
         {
-            actionTimer -= Time.deltaTime;
-            if (!action)
+            SummonTimer -= Time.deltaTime;
+            if (!agent.hasPath || agent.remainingDistance < 0.5f)
             {
-                agent.isStopped = false;
-                if (!agent.hasPath || agent.remainingDistance < 0.5f)
-                {
-                    Vector2 randPos = Random.insideUnitCircle * freeroamRange;//random position for freeroam
-                    agent.destination = playerPos + new Vector3(randPos.x, 0f, randPos.y);
-                }
+                Vector2 randPos = Random.insideUnitCircle * freeroamRange;//random position for freeroam
+                agent.destination = playerPos + new Vector3(randPos.x, 0f, randPos.y);
             }
         }
         else
         {
+            Debug.Log("summon");
+            agent.isStopped = true;
             agent.ResetPath();
-
-            RandomAction();
-
-                if (action)//summon enemies
-                {
-                    Debug.Log("summon");
-                    anim.SetTrigger("Summon");
-                    PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
-                CameraController.Instance.Shake();
-                    SummonEnemy.instance.spawnEnemy();
-                }
-             actionTimer = actionDuration;
+            isSummoning = true;
+            anim.SetTrigger("Summon");
+            PlayerController.instance.audiosource.PlayOneShot(SummonSfx, 0.4f);
+            CameraController.Instance.Shake();
+            SummonEnemy.instance.spawnEnemy();
         }
     }
 
@@ -106,20 +92,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
                     PlayerController.instance.audiosource.PlayOneShot(GetHitSfx, 0.6f);
                 }
             }
-        }
-    }
-
-    public void RandomAction()
-    {
-        float randomVal = Random.value;//0.0 - 1.0
-        
-        if (randomVal < spawnfreq)//chance to summon minions
-        {
-            action = true;
-        }
-        else//chance to free roam
-        {
-            action = false;
         }
     }
 

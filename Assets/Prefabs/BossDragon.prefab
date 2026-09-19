@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4042420989025692847
 Transform:
   m_ObjectHideFlags: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   animator: {fileID: 8409552012755234224}
   firePrefab: {fileID: 3390670577263124499, guid: aebc7bcc2710f294fa46907632d84b1e, type: 3}
   firePoolSize: 20
+  summonfreq: 0.3
   HealthBarGO: {fileID: 3384334641860780517}
 --- !u!195 &4512456216578166041
 NavMeshAgent:
@@ -272,19 +273,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4673175692752405680, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4673175692752405680, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5247674001076993601, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5247674001076993601, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8411128659313765423, guid: fa5ce6c77184d8e4c9a733c223738e63, type: 3}
       propertyPath: m_AnchorMax.x

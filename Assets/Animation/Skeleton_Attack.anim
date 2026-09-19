@@ -41632,7 +41632,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.75
-    functionName: TriggerAttack
+    functionName: TriggerAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

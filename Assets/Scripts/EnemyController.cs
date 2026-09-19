@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
     public GameObject HealthBarGO;
 
     //melee attack animation
-    private AttackTrigger attackTrigger;
+    private AnimationTrigger attackTrigger;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
             chasing = true;
         }
 
-        attackTrigger = GetComponentInChildren<AttackTrigger>();
+        attackTrigger = GetComponentInChildren<AnimationTrigger>();
     }
 
     // Update is called once per frame
@@ -105,10 +105,10 @@ public class EnemyController : MonoBehaviour
         }
 
         //Trigger Melee Attack
-        if (attackTrigger != null && attackTrigger.Attack)
+        if (attackTrigger != null && attackTrigger.Trigger)
         {
             Attack();
-            attackTrigger.Attack = false;
+            attackTrigger.Trigger = false;
         }
 
         if (!chasing)//chasing is false
@@ -304,10 +304,10 @@ public class EnemyController : MonoBehaviour
     {
         agent.enabled = false;
         anim.SetTrigger("Dead");
-        isDead = true;
         Collider hitbox = GetComponentInChildren<Collider>();
         hitbox.enabled = false;
         HealthBarGO.SetActive(false);
+        isDead = true;
     }
 
     public void GetHitAnim()

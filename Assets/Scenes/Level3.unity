@@ -77097,7 +77097,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d16ca944092be0942b15ed5e9256799e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -86543,6 +86543,7 @@ MonoBehaviour:
   Gate: {fileID: 652311128}
   BGM1: {fileID: 2043551391}
   BGM2: {fileID: 1377437232}
+  SummonEffect: {fileID: 0}
 --- !u!65 &1573225476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87941,9 +87942,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6058198524135611008, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058198524135611008, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_Name
       value: BossDragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6484716859071693240, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636621737857802353, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636621737857802353, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6949945989765034527, guid: e7a33fe4677ee8e49b78acf779bf2a9b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -112128,7 +112149,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5daf5afa234c66541acab1051d4e2aee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
