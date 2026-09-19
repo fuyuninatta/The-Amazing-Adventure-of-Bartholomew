@@ -156,7 +156,6 @@ public class EnemyController : MonoBehaviour
                     if (shotWaitCounter <= 0)
                     {
                         anim.SetTrigger("fireShot");
-                        GetBullet(firePoint.position, firePoint.rotation);
                         shotWaitCounter = waitBetweenShots;
                     }
                 }
@@ -282,6 +281,11 @@ public class EnemyController : MonoBehaviour
         //calculate knockback power
         knockbackVel = dir * force;
         knockbackTimer = force * 0.04f;
+    }
+
+    public void Attack()
+    {
+        GetBullet(firePoint.position, firePoint.rotation);
     }
 
     public void Dead()

@@ -39,7 +39,7 @@ public class EnemyHealthController : MonoBehaviour, IDamagable
             //dead
             if (currentHealth <= 0)
             {
-                PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.6f);
+                PlayerController.instance.audiosource.PlayOneShot(DeathSfx, 0.4f);
                 transform.GetComponent<EnemyController>().Dead();
             }
             else

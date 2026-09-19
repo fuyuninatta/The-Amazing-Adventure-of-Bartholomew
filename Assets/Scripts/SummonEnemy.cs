@@ -52,7 +52,11 @@ public class SummonEnemy : MonoBehaviour
     {
         foreach(Transform point in spawnPoints)
         {
-            Destroy(point.gameObject);
+            EnemyController[] enemies = point.GetComponentsInChildren<EnemyController>();
+            foreach (EnemyController enemy in enemies)
+            {
+                enemy.Dead();
+            }
         }
     }
 }

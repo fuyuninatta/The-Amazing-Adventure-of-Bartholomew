@@ -43,6 +43,7 @@ public class BossController : MonoBehaviour, IDamagable
     private int phase2action = 0; 
     private float phase2Timer = 0f, actionDuration = 5f, freeroamRange = 10f;
     private bool isReturning = false;
+    public float summonfreq = 0.3f;
 
     //UI
     public GameObject HealthBarGO;
@@ -52,6 +53,7 @@ public class BossController : MonoBehaviour, IDamagable
     {
         currentHealth = MaxHealth;
         PrepareFirePool();
+        isAttacking = true;
         originalPos = transform.position;
         originalRot = transform.rotation;
         PlayerController.instance.audiosource.PlayOneShot(ScreamSfx, 0.6f);
@@ -220,7 +222,7 @@ public class BossController : MonoBehaviour, IDamagable
                         Debug.Log("shootfire");
                         isAttacking = true; 
                     }
-                    else if (phase2action == 2)//summon enemies(Land>Scream>Fly again)
+                    else if (phase2action == 2)//summon enemies(Land > Scream > Fly again)
                     {
                         Debug.Log("Returning");
                         isReturning = true;
@@ -270,13 +272,13 @@ public class BossController : MonoBehaviour, IDamagable
     {
         float randomVal = Random.value;//0.0 - 1.0
 
-        if (randomVal < 0.85f)//85% chance to shoot
-        {
-            phase2action = 1;
-        }
-        else//15% chance to summon minions
+        if (randomVal < summonfreq)//chance to summon minions
         {
             phase2action = 2;
+        }
+        else//chance to shoot fire
+        {
+            phase2action = 1;
         }
     }
 
