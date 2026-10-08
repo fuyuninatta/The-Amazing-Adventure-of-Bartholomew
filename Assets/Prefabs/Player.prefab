@@ -217,7 +217,7 @@ MonoBehaviour:
   lethalFallSpeed: -60
   maxFallSpeed: 0
   fallDamageRatio: 50
-  dashSpeed: 25
+  dashSpeed: 15
   dashDuration: 0.5
   dashTimer: 0
   firePoint: {fileID: 6197520456830171871}
@@ -231,11 +231,16 @@ MonoBehaviour:
   BowSupply: 25
   CrossbowSupply: 10
   ManaSupply: 30
+  maxArrow: 300
+  maxCrossbowArrow: 200
+  maxMana: 100
   ladderSpeed: 3
   audiosource: {fileID: 0}
   pickupArrowSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
   pickupCrossbowArrowSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
   pickupManaSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
+  jumpSFX: {fileID: 0}
+  DashSFX: {fileID: 0}
   knockbackForce: 20
 --- !u!82 &5053701831920036581
 AudioSource:

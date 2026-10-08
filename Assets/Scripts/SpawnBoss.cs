@@ -39,6 +39,8 @@ public class SpawnBoss : MonoBehaviour
             //CHANGE BGM
             BGM1.gameObject.SetActive(false);
             BGM2.gameObject.SetActive(true);
+
+            ObjectiveManager.instance.UpdateObjective();
         }
     }
 

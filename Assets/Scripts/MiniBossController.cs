@@ -32,6 +32,7 @@ public class MiniBossController : MonoBehaviour, IDamagable
         healthBar = GetComponent<HealthBar>();
         hitbox = GetComponentInChildren<Collider>();
         SummonTrigger = GetComponentInChildren<AnimationTrigger>();
+        SummonTimer = 0;
     }
 
     // Update is called once per frame
@@ -108,5 +109,6 @@ public class MiniBossController : MonoBehaviour, IDamagable
 
         //spawn item
         Instantiate(WeaponGate, spawnitemPos.position, transform.rotation);
+        ObjectiveManager.instance.UpdateObjective();
     }
 }

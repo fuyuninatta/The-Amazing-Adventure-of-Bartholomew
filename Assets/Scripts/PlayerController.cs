@@ -1,5 +1,6 @@
 using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.SceneManagement;
@@ -65,14 +66,6 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < allGuns.Count; i++)
         {
             allGuns[i].PreparePool();
-
-            //get maxGunIndex
-            if(PlayerPrefs.HasKey("maxGunIndex"))
-            {
-                maxGunIndex = PlayerPrefs.GetInt("maxGunIndex");
-            }
-            
-
             //get current ammo
             if(PlayerPrefs.HasKey("Gun_"+i+"_Ammo"))//prevent error
             {
@@ -80,8 +73,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        AmmoUpdate();
+        //unlock weapon base on level
+        string sceneName = SceneManager.GetActiveScene().name;
+        maxGunIndex = sceneName switch
+        {
+            "Level1" => 1,
+            "Level2" => 2,
+            "Level3" => 3,
+            _ => allGuns.Count//default
+        };
 
+        AmmoUpdate();
         audiosource = GetComponent<AudioSource>();
     }
 
@@ -296,11 +298,6 @@ public class PlayerController : MonoBehaviour
         //load next level
         if(other.gameObject.CompareTag("NextLevel"))
         {
-            PlayerPrefs.SetInt("maxGunIndex", maxGunIndex + 1);//unlock new gun
-            if(maxGunIndex>3)//PREVENT ERROR
-            {
-                PlayerPrefs.SetInt("maxGunIndex", 3);
-            }
             SaveGunData();
             PlayerHeathController.instance.updateHealth();
             GameManager.instance.LoadNextScene();

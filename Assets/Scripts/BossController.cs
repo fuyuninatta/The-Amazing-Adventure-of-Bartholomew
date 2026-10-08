@@ -301,6 +301,7 @@ public class BossController : MonoBehaviour, IDamagable
 
         SummonEnemy.instance.DestroyEnemy();
         SpawnBoss.instance.closeBGM();
+        ObjectiveManager.instance.UpdateObjective();
 
         hitbox.SetActive(false);
         HealthBarGO.SetActive(false);
