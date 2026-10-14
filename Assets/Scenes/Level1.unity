@@ -173,6 +173,7 @@ MonoBehaviour:
   Gate: {fileID: 1443275121}
   BGM1: {fileID: 1541451219}
   BGM2: {fileID: 1643611151}
+  SummonEffect: {fileID: 1399491476850481373, guid: 7e691a0229efacd4cba2922df3888456, type: 3}
 --- !u!65 &6556972
 BoxCollider:
   m_ObjectHideFlags: 0

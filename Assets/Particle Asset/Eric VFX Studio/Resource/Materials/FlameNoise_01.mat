@@ -91,7 +91,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blend2: 1
-    - _Brightness: 2
+    - _Brightness: 2.5
     - _BumpScale: 1
     - _CullMode: 0
     - _Cutoff: 0.5
@@ -124,6 +124,7 @@ Material:
     - _Usecenterglow: 0
     - _Usecustomrandom: 0
     - _Usedepth: 0
+    - _VertexAlphaRef: 1
     - _ZWrite: 1
     - _node_5966: 0
     m_Colors:
@@ -136,5 +137,5 @@ Material:
     - _OverlayColor: {r: 1, g: 1, b: 1, a: 1}
     - _OverlayFlowSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _SpeedMainTexUVNoiseZW: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _TintColor: {r: 0.7509433, g: 0.7509433, b: 0.7509433, a: 0.8117647}
   m_BuildTextureStacks: []
