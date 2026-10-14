@@ -30,6 +30,8 @@ public class SpawnBoss : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            ObjectiveManager.instance.UpdateObjective();
+
             //set up boss, boss health, gate
             Boss.gameObject.SetActive(true);
             Gate.gameObject.SetActive(true);
@@ -39,8 +41,6 @@ public class SpawnBoss : MonoBehaviour
             //CHANGE BGM
             BGM1.gameObject.SetActive(false);
             BGM2.gameObject.SetActive(true);
-
-            ObjectiveManager.instance.UpdateObjective();
         }
     }
 
