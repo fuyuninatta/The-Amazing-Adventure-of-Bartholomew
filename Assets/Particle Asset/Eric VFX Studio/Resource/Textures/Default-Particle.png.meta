@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 2b9c2309eda4c4ace9a7c9d51ad432e0
 timeCreated: 1555908272
-licenseType: Pro
+licenseType: Store
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -83,3 +83,10 @@ TextureImporter:
   userData: 
   assetBundleName: builtin_builtin_images.unity3d
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 345212
+  packageName: Free Game VFX Collection(URP)
+  packageVersion: 1.03
+  assetPath: Assets/Particle Asset/Eric VFX Studio/Resource/Textures/Default-Particle.png
+  uploadId: 992578

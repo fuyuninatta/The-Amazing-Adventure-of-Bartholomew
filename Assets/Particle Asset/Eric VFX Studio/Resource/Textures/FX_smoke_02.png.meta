@@ -101,3 +101,10 @@ TextureImporter:
   userData: 
   assetBundleName: fx_textures_dust.unity3d
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 345212
+  packageName: Free Game VFX Collection(URP)
+  packageVersion: 1.03
+  assetPath: Assets/Particle Asset/Eric VFX Studio/Resource/Textures/FX_smoke_02.png
+  uploadId: 992578

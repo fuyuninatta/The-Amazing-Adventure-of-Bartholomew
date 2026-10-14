@@ -134,6 +134,7 @@ MonoBehaviour:
   attackPlayer: 0
   damage: 1
   pierceCount: 0
+  hitImpactSFX: {fileID: 8300000, guid: 9319ada8235a23b49929d66279129347, type: 3}
   KnockBackPower: 0
   shooter: {fileID: 0}
 --- !u!54 &7749872265384852243

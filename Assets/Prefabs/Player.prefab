@@ -239,8 +239,8 @@ MonoBehaviour:
   pickupArrowSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
   pickupCrossbowArrowSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
   pickupManaSFX: {fileID: 8300000, guid: d9cb8918a6c43834aa1516f91e7d97a1, type: 3}
-  jumpSFX: {fileID: 0}
-  DashSFX: {fileID: 0}
+  jumpSFX: {fileID: 8300000, guid: f4d5734c619227a40b12b37951ec02a2, type: 3}
+  DashSFX: {fileID: 8300000, guid: a48491b7dd35e5a4488db7014b09aca1, type: 3}
   knockbackForce: 20
 --- !u!82 &5053701831920036581
 AudioSource:
