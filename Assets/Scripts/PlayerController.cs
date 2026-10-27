@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //must remove before showcase
+        /*
         if (Input.GetKey(KeyCode.O))
         {
             maxGunIndex = 3;
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
             PlayerHeathController.instance.currentHealth = PlayerHeathController.instance.maxHealth;
             PlayerHeathController.instance.UpdateHealthUI();
         }
+        */
 
         //moveInput.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         //moveInput.z = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
