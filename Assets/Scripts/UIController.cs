@@ -40,7 +40,7 @@ public class UIController : MonoBehaviour
             UpdateTimerDisplay();
         }
     }
-
+        
     private void UpdateTimerDisplay()
     {
         int minutes = Mathf.FloorToInt(timeElapsed / 60f);

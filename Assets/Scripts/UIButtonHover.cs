@@ -51,7 +51,6 @@ public class UIButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // Reset scale on click so it feels snappy
         transform.localScale = originalScale;
     }
 }

@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 :root
 {
     --color-cfxrf: rgba(64, 220, 160, 0.5);
@@ -103,3 +104,4 @@ Button:active
     border-color: #222;
     color: #AAA;
 }
+#endif
